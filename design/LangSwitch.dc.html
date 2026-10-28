@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&amp;display=swap"></helmet>
+<div ref="{{ rootRef }}" onKeyDown="{{ onKey }}" style="position:relative;display:inline-flex;font-family:Fredoka,Nunito,system-ui,sans-serif;">
+  <button type="button" aria-haspopup="menu" aria-expanded="{{ isOpen }}" aria-label="{{ ariaLabel }}" onClick="{{ toggle }}" style="display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:#FFFFFF;border:none;border-radius:999px;font-family:inherit;font-weight:700;font-size:16px;line-height:1;color:#2D2842;box-shadow:0 4px 0 rgba(45,40,66,0.08);cursor:pointer;transition:transform .12s ease, box-shadow .12s ease;white-space:nowrap;" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 rgba(45,40,66,0.08);" style-active="transform:translateY(1px);box-shadow:0 2px 0 rgba(45,40,66,0.08);">
+    <img src="{{ cur.flag }}" alt="" style="width:24px;height:16px;border-radius:4px;object-fit:cover;box-shadow:0 0 0 1px rgba(45,40,66,0.10);display:block;">
+    <sc-if value="{{ showCode }}" hint-placeholder-val="{{ true }}"><span>{{ cur.code }}</span></sc-if>
+    <sc-if value="{{ showName }}" hint-placeholder-val="{{ false }}"><span>{{ cur.name }}</span></sc-if>
+    <span aria-hidden="true" style="font-size:10px;color:#A8A2BD;margin-left:-2px;">▼</span>
+  </button>
+  <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="menu" aria-label="{{ ariaLabel }}" style="position:absolute;top:{{ menuTop }};bottom:{{ menuBottom }};left:{{ menuLeft }};right:{{ menuRight }};z-index:50;min-width:170px;padding:6px;background:#FFFFFF;border-radius:18px;box-shadow:0 10px 30px rgba(45,40,66,0.14);display:flex;flex-direction:column;gap:2px;">
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="2">
+        <button type="button" role="menuitemradio" aria-checked="{{ r.active }}" lang="{{ r.id }}" onClick="{{ r.pick }}" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:none;border-radius:12px;background:{{ r.bg }};font-family:inherit;font-weight:600;font-size:16px;color:#2D2842;cursor:pointer;text-align:left;white-space:nowrap;" style-hover="background:#FFF8E6;">
+          <img src="{{ r.flag }}" alt="" style="width:24px;height:16px;border-radius:4px;object-fit:cover;box-shadow:0 0 0 1px rgba(45,40,66,0.10);display:block;">
+          <span style="flex:1;">{{ r.name }}</span>
+          <sc-if value="{{ r.active }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="color:#D9921A;font-weight:700;">✓</span></sc-if>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:260,&quot;height&quot;:160},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ro&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ro'&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;code&quot;,&quot;flag&quot;,&quot;full&quot;],&quot;default&quot;:&quot;code&quot;,&quot;tsType&quot;:&quot;'code'|'flag'|'full'&quot;},&quot;forceOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;up&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;align&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;left&quot;,&quot;right&quot;],&quot;default&quot;:&quot;left&quot;,&quot;tsType&quot;:&quot;'left'|'right'&quot;},&quot;onChange&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(lang:string)=&gt;void&quot;}}">
+class Component extends DCLogic {
+  state = { open: false };
+  rootRef = React.createRef();
+  componentDidMount() {
+    this.onDoc = (e) => { if (this.state.open && this.rootRef.current && !this.rootRef.current.contains(e.target)) this.setState({ open: false }); };
+    document.addEventListener('mousedown', this.onDoc);
+  }
+  componentWillUnmount() { document.removeEventListener('mousedown', this.onDoc); }
+  renderVals() {
+    const L = { en: { id: 'en', code: 'EN', name: 'English', flag: 'assets/flag-gb.svg' }, ro: { id: 'ro', code: 'RO', name: 'Română', flag: 'assets/flag-ro.svg' } };
+    const lang = this.props.lang === 'ro' ? 'ro' : 'en';
+    const variant = this.props.variant ?? 'code';
+    const isOpen = !!(this.props.forceOpen || this.state.open);
+    const up = !!this.props.up, right = this.props.align === 'right';
+    const pick = (id) => () => { this.setState({ open: false }); this.props.onChange && this.props.onChange(id); };
+    return {
+      rootRef: this.rootRef, cur: L[lang], isOpen,
+      showCode: variant === 'code', showName: variant === 'full',
+      ariaLabel: lang === 'ro' ? 'Limbă: Română' : 'Language: English',
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      onKey: (e) => { if (e.key === 'Escape') this.setState({ open: false }); },
+      menuTop: up ? 'auto' : 'calc(100% + 8px)', menuBottom: up ? 'calc(100% + 8px)' : 'auto',
+      menuLeft: right ? 'auto' : '0', menuRight: right ? '0' : 'auto',
+      rows: ['en', 'ro'].map(id => ({ ...L[id], active: id === lang, bg: id === lang ? '#FFF4D9' : 'transparent', pick: pick(id) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

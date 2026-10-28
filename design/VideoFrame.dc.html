@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&amp;display=swap"></helmet>
+<div style="width:100%;background:#FFFFFF;border-radius:28px;padding:clamp(8px,1.2vw,14px);box-sizing:border-box;box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);font-family:Fredoka,Nunito,system-ui,sans-serif;">
+  <div style="container-type:inline-size;position:relative;width:100%;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#FFF2D1;">
+    <sc-if value="{{ poster }}" hint-placeholder-val="{{ true }}">
+      <div role="img" aria-label="{{ t.alt }}" style="position:absolute;inset:0;">
+        <div style="position:absolute;left:-8cqw;top:-10cqw;width:30cqw;height:26cqw;border-radius:50%;background:#FFD78A;opacity:.6;filter:blur(2cqw);"></div>
+        <div style="position:absolute;right:-8cqw;top:18cqw;width:22cqw;height:22cqw;border-radius:50%;background:#FFB6C9;opacity:.6;filter:blur(2cqw);"></div>
+        <div style="position:absolute;left:10cqw;bottom:-12cqw;width:22cqw;height:18cqw;border-radius:50%;background:#B89CFA;opacity:.45;filter:blur(2cqw);"></div>
+        <div style="position:absolute;left:3cqw;right:3cqw;top:2.6cqw;display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:1cqw;background:#fff;border-radius:99px;padding:.6cqw 1.4cqw .6cqw .6cqw;box-shadow:0 .4cqw 0 rgba(45,40,66,0.06);">
+            <img src="assets/bear.png" alt="" style="width:3.4cqw;height:3.4cqw;border-radius:50%;background:#DCEBFC;object-fit:cover;">
+            <span style="font-weight:700;font-size:2cqw;color:#2D2842;">{{ t.kid }}</span>
+            <span style="font-weight:700;font-size:1.4cqw;color:#fff;background:#F6B73C;border-radius:99px;padding:.3cqw .9cqw;">{{ t.lvl }}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1cqw;">
+            <span style="display:flex;align-items:center;gap:.6cqw;background:#fff;border:.25cqw solid #D9A325;border-radius:99px;padding:.6cqw 1.4cqw;font-weight:700;font-size:2cqw;color:#2D2842;">⭐ 638</span>
+            <span style="display:flex;align-items:center;gap:.6cqw;background:#fff;border-radius:99px;padding:.8cqw 1.2cqw;font-weight:700;font-size:1.6cqw;color:#2D2842;box-shadow:0 .4cqw 0 rgba(45,40,66,0.06);"><img src="{{ flag }}" alt="" style="width:2.4cqw;height:1.6cqw;border-radius:.3cqw;object-fit:cover;">{{ code }}</span>
+          </div>
+        </div>
+        <div style="position:absolute;left:20cqw;right:20cqw;top:10cqw;height:37cqw;background:#fff;border-radius:3cqw;box-shadow:0 1cqw 3cqw rgba(45,40,66,0.06);">
+          <div style="position:absolute;left:50%;top:-1.8cqw;transform:translateX(-50%);background:#F6B73C;color:#fff;font-weight:700;font-size:1.6cqw;letter-spacing:.05em;padding:.9cqw 2.4cqw;border-radius:99px;box-shadow:0 .4cqw 0 #D9921A;white-space:nowrap;">{{ t.quest }}</div>
+          <div style="position:absolute;left:5cqw;top:7cqw;width:17cqw;background:#FFE9B0;border-radius:2cqw 2cqw 2cqw .5cqw;padding:1.4cqw 1.8cqw;font-weight:600;font-size:1.7cqw;line-height:1.3;color:#2D2842;">{{ t.bubble }}</div>
+          <img src="assets/husky-wizard.png" alt="" style="position:absolute;right:6cqw;top:2.6cqw;height:27cqw;width:auto;">
+          <div style="position:absolute;left:4cqw;right:4cqw;bottom:2.6cqw;display:flex;align-items:center;gap:1.6cqw;font-weight:700;font-size:1.3cqw;color:#6B6580;white-space:nowrap;">
+            <span>{{ t.next }}</span>
+            <div style="flex:1;height:1cqw;background:#F1EDF5;border-radius:99px;overflow:hidden;"><div style="width:88%;height:100%;background:#F6B73C;border-radius:99px;"></div></div>
+            <span>{{ t.xp }}</span>
+          </div>
+        </div>
+        <div style="position:absolute;left:20cqw;right:20cqw;top:51cqw;display:flex;gap:2cqw;">
+          <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:1cqw;background:#79B8F5;color:#fff;font-weight:700;font-size:2.6cqw;padding:1.4cqw;border-radius:99px;box-shadow:0 .6cqw 0 #4F95DE;">🎮 {{ t.btnPlay }}</div>
+          <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:1cqw;background:#B89CFA;color:#fff;font-weight:700;font-size:2.6cqw;padding:1.4cqw;border-radius:99px;box-shadow:0 .6cqw 0 #8E72E0;">🛍️ {{ t.btnShop }}</div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noPoster }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#FCE2A6 0 10px,#FFF2D1 10px 20px);display:flex;align-items:flex-start;justify-content:flex-start;padding:2.4cqw;box-sizing:border-box;">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:max(11px,1.3cqw);color:#6B6580;background:#FFF8E6;padding:.6cqw 1cqw;border-radius:6px;">{{ t.posterLabel }} · 16:10</span>
+      </div>
+    </sc-if>
+    <button type="button" aria-label="{{ t.play }}" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:1.4cqw;background:none;border:none;cursor:pointer;font-family:inherit;padding:0;" style-hover="transform:translate(-50%,calc(-50% - 2px));">
+      <span style="width:max(56px,10cqw);height:max(56px,10cqw);border-radius:50%;background:#FFFFFF;box-shadow:0 5px 0 #4F95DE, 0 10px 30px rgba(45,40,66,0.18);display:flex;align-items:center;justify-content:center;">
+        <span style="width:0;height:0;border-style:solid;border-width:max(10px,1.8cqw) 0 max(10px,1.8cqw) max(16px,2.9cqw);border-color:transparent transparent transparent #4F95DE;margin-left:max(4px,.7cqw);"></span>
+      </span>
+      <span style="background:#2D2842;color:#fff;font-weight:600;font-size:max(13px,1.6cqw);padding:max(5px,.7cqw) max(12px,1.6cqw);border-radius:99px;white-space:nowrap;">{{ t.caption }}</span>
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:760,&quot;height&quot;:520},&quot;poster&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ro&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ro'&quot;},&quot;t&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const t = this.props.t || (window.NP_COPY ? window.NP_COPY.en.video : {});
+    const poster = this.props.poster ?? true;
+    const ro = this.props.lang === 'ro';
+    return { t, poster, noPoster: !poster, flag: ro ? 'assets/flag-ro.svg' : 'assets/flag-gb.svg', code: ro ? 'RO' : 'EN' };
+  }
+}
+</script>
+</body>
+</html>

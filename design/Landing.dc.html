@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&amp;display=swap">
+<script src="np-copy.js"></script>
+<style>
+@keyframes npBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes npPop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){[data-np-anim]{animation:none !important}}
+a{color:#4F95DE}a:hover{color:#2D2842}
+</style>
+</helmet>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div lang="{{ lang }}" style="container-type:inline-size;position:relative;background:#FFF2D1;font-family:Fredoka,Nunito,system-ui,sans-serif;color:#2D2842;overflow:clip;-webkit-font-smoothing:antialiased;">
+
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <header style="position:sticky;top:0;z-index:40;background:#FFF2D1;border-bottom:1px solid rgba(45,40,66,0.08);">
+      <div style="max-width:1344px;margin:0 auto;padding:16px 48px;display:flex;align-items:center;gap:24px;box-sizing:border-box;">
+        <a href="#{{ idp }}-top" aria-label="{{ t.nav.home }}" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#2D2842;font-weight:700;font-size:26px;flex:none;"><img src="assets/star.svg" alt="" style="width:32px;height:32px;">NumiPaws</a>
+        <nav style="display:flex;gap:2px;margin:0 auto;">
+          <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="4">
+            <a href="{{ l.href }}" style="padding:10px 14px;border-radius:999px;font-weight:600;font-size:17px;color:#2D2842;text-decoration:none;white-space:nowrap;" style-hover="background:#FFF8E6;color:#2D2842;">{{ l.label }}</a>
+          </sc-for>
+        </nav>
+        <div style="display:flex;align-items:center;gap:12px;flex:none;">
+          <dc-import name="LangSwitch" lang="{{ lang }}" on-change="{{ setLang }}" align="right" hint-size="86px,40px"></dc-import>
+          <a href="{{ links.login }}" style="display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:#FFFFFF;color:#2D2842;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 4px 0 #E6E1F0;transition:transform .12s, box-shadow .12s;white-space:nowrap;" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 #E6E1F0;color:#2D2842;" style-active="transform:translateY(1px);box-shadow:0 2px 0 #E6E1F0;">{{ t.nav.login }}</a>
+          <a href="{{ links.parent }}" style="display:inline-flex;align-items:center;padding:11px 22px;border-radius:999px;background:#79B8F5;color:#FFFFFF;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 4px 0 #4F95DE;transition:transform .12s, box-shadow .12s;white-space:nowrap;" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 #4F95DE;color:#FFFFFF;" style-active="transform:translateY(1px);box-shadow:0 2px 0 #4F95DE;">{{ t.nav.signup }}</a>
+        </div>
+      </div>
+    </header>
+  </sc-if>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <header style="position:sticky;top:0;z-index:40;background:#FFF2D1;border-bottom:1px solid rgba(45,40,66,0.08);">
+      <div style="padding:12px 20px 14px;display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <a href="#{{ idp }}-top" aria-label="{{ t.nav.home }}" style="display:flex;align-items:center;gap:6px;text-decoration:none;color:#2D2842;font-weight:700;font-size:23px;margin-right:auto;"><img src="assets/star.svg" alt="" style="width:28px;height:28px;">NumiPaws</a>
+          <dc-import name="LangSwitch" lang="{{ lang }}" on-change="{{ setLang }}" variant="flag" align="right" hint-size="64px,40px"></dc-import>
+          <button type="button" aria-expanded="{{ menuOpen }}" aria-label="{{ menuLabel }}" onClick="{{ toggleMenu }}" style="width:44px;height:44px;border-radius:50%;border:none;background:#FFFFFF;box-shadow:0 4px 0 rgba(45,40,66,0.08);font-size:20px;color:#2D2842;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;">{{ menuIcon }}</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:10px;">
+          <a href="{{ links.login }}" style="display:flex;align-items:center;justify-content:center;min-height:46px;padding:0 12px;border-radius:999px;background:#FFFFFF;color:#2D2842;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 4px 0 #E6E1F0;text-align:center;">{{ t.nav.login }}</a>
+          <a href="{{ links.parent }}" style="display:flex;align-items:center;justify-content:center;min-height:46px;padding:0 12px;border-radius:999px;background:#79B8F5;color:#FFFFFF;font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 4px 0 #4F95DE;text-align:center;">{{ t.nav.signup }}</a>
+        </div>
+        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+          <nav style="display:flex;flex-direction:column;background:#FFFFFF;border-radius:24px;padding:8px;box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);">
+            <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="4">
+              <a href="{{ l.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 16px;border-radius:16px;font-weight:600;font-size:20px;color:#2D2842;text-decoration:none;" style-hover="background:#FFF8E6;color:#2D2842;">{{ l.label }}<span style="color:#A8A2BD;">→</span></a>
+            </sc-for>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;border-top:1px solid rgba(45,40,66,0.08);margin-top:6px;">
+              <span style="font-weight:600;font-size:16px;color:#6B6580;">{{ t.lang.label }}</span>
+              <dc-import name="LangSwitch" lang="{{ lang }}" on-change="{{ setLang }}" variant="full" align="right" hint-size="140px,40px"></dc-import>
+            </div>
+          </nav>
+        </sc-if>
+      </div>
+    </header>
+  </sc-if>
+
+  <sc-if value="{{ showHero }}" hint-placeholder-val="{{ true }}">
+    <section id="{{ idp }}-top" style="max-width:1344px;margin:0 auto;padding:clamp(20px,4cqw,56px) clamp(20px,3.4cqw,48px) clamp(40px,5cqw,72px);display:flex;flex-wrap:wrap-reverse;align-items:center;gap:clamp(8px,3cqw,40px);box-sizing:border-box;">
+      <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:clamp(18px,1.8cqw,26px);">
+        <h1 style="margin:0;font-weight:700;font-size:clamp(42px,5cqw,74px);line-height:1.04;letter-spacing:-0.01em;text-wrap:balance;">{{ headline }}</h1>
+        <p style="margin:0;font-weight:500;font-size:clamp(19px,1.6cqw,23px);line-height:1.45;color:#6B6580;max-width:32ch;text-wrap:pretty;">{{ t.hero.sub }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,1.2cqw,16px);margin-top:4px;">
+          <a href="{{ links.parent }}" style="flex:0 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:clamp(15px,1.25cqw,18px) clamp(24px,2.1cqw,30px);border-radius:999px;background:#79B8F5;color:#FFFFFF;font-weight:700;font-size:clamp(20px,1.8cqw,26px);line-height:1.1;text-decoration:none;box-shadow:0 5px 0 #4F95DE;transition:transform .12s, box-shadow .12s;text-align:center;" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #4F95DE;color:#FFFFFF;" style-active="transform:translateY(1px);box-shadow:0 4px 0 #4F95DE;"><span aria-hidden="true">👤</span>{{ t.hero.ctaParent }}</a>
+          <a href="{{ links.teacher }}" style="flex:0 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:clamp(15px,1.25cqw,18px) clamp(24px,2.1cqw,30px);border-radius:999px;background:#FFFFFF;color:#2D2842;font-weight:700;font-size:clamp(20px,1.8cqw,26px);line-height:1.1;text-decoration:none;box-shadow:0 5px 0 #E6E1F0;transition:transform .12s, box-shadow .12s;text-align:center;" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #E6E1F0;color:#2D2842;" style-active="transform:translateY(1px);box-shadow:0 4px 0 #E6E1F0;"><span aria-hidden="true">🎓</span>{{ t.hero.ctaTeacher }}</a>
+        </div>
+        <ul style="list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ t.hero.chips }}" as="c" hint-placeholder-count="3">
+            <li style="padding:6px 12px;border-radius:999px;background:#FFF8E6;font-weight:500;font-size:15px;color:#6B6580;">{{ c }}</li>
+          </sc-for>
+        </ul>
+      </div>
+
+      <div style="flex:0 1 560px;min-width:0;position:relative;">
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <div style="position:relative;height:560px;">
+            <div style="position:absolute;left:30px;top:70px;width:380px;height:320px;border-radius:50%;background:#FFD78A;opacity:.6;filter:blur(40px);"></div>
+            <div style="position:absolute;right:-30px;top:10px;width:260px;height:240px;border-radius:50%;background:#FFB6C9;opacity:.6;filter:blur(40px);"></div>
+            <div style="position:absolute;left:180px;bottom:60px;width:260px;height:200px;border-radius:50%;background:#B89CFA;opacity:.6;filter:blur(44px);"></div>
+            <sc-for list="{{ sparklesD }}" as="s" hint-placeholder-count="0"><span style="position:absolute;left:{{ s.x }};top:{{ s.y }};width:{{ s.r }};height:{{ s.r }};border-radius:50%;background:{{ s.c }};opacity:.55;"></span></sc-for>
+            <img src="assets/bear.png" alt="{{ t.hero.altBear }}" style="position:absolute;left:-10px;bottom:62px;width:170px;transform:rotate(-10deg);">
+            <img src="assets/kitty.png" alt="{{ t.hero.altKitty }}" style="position:absolute;right:-14px;bottom:70px;width:170px;transform:rotate(10deg);">
+            <div style="position:absolute;left:-60px;right:-60px;bottom:-70px;height:200px;border-radius:50%;background:#FCE2A6;"></div>
+            <div data-np-anim="1" style="position:absolute;left:90px;bottom:28px;width:380px;height:380px;animation:npBob 3s ease-in-out infinite;">
+              <img src="assets/husky.png" alt="{{ t.hero.altHusky }}" style="width:100%;height:100%;display:block;">
+            </div>
+            <div style="position:absolute;right:20px;top:96px;max-width:200px;background:#FFFFFF;border-radius:24px 24px 24px 6px;padding:14px 20px;font-weight:600;font-size:20px;line-height:1.25;box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);">{{ t.hero.bubble }}</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative;height:250px;overflow:hidden;border-radius:0 0 28px 28px;">
+            <div style="position:absolute;left:10px;top:20px;width:240px;height:200px;border-radius:50%;background:#FFD78A;opacity:.6;filter:blur(30px);"></div>
+            <div style="position:absolute;right:-20px;top:0;width:160px;height:160px;border-radius:50%;background:#FFB6C9;opacity:.6;filter:blur(30px);"></div>
+            <sc-for list="{{ sparklesM }}" as="s" hint-placeholder-count="0"><span style="position:absolute;left:{{ s.x }};top:{{ s.y }};width:{{ s.r }};height:{{ s.r }};border-radius:50%;background:{{ s.c }};opacity:.55;"></span></sc-for>
+            <img src="assets/kitty.png" alt="{{ t.hero.altKitty }}" style="position:absolute;right:-30px;bottom:6px;width:130px;transform:rotate(12deg);">
+            <div style="position:absolute;left:-40px;right:-40px;bottom:-60px;height:110px;border-radius:50%;background:#FCE2A6;"></div>
+            <div data-np-anim="1" style="position:absolute;left:50%;margin-left:-150px;top:28px;width:300px;height:300px;animation:npBob 3s ease-in-out infinite;">
+              <img src="assets/husky.png" alt="{{ t.hero.altHusky }}" style="width:100%;height:100%;display:block;">
+            </div>
+            <div style="position:absolute;left:4px;top:18px;max-width:150px;background:#FFFFFF;border-radius:24px 24px 6px 24px;padding:10px 14px;font-weight:600;font-size:16px;line-height:1.25;box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);">{{ t.hero.bubble }}</div>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showRest }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:1216px;margin:0 auto;padding:clamp(16px,2cqw,32px) clamp(20px,3.4cqw,48px) 0;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:clamp(24px,2.6cqw,40px);">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#2D2842;"><span style="width:10px;height:10px;border-radius:50%;background:#F6B73C;"></span>{{ t.video.eyebrow }}</span>
+        <h2 style="margin:0;font-weight:700;font-size:clamp(32px,3.5cqw,52px);line-height:1.08;text-wrap:balance;">{{ t.video.title }}</h2>
+        <p style="margin:0;font-weight:500;font-size:clamp(18px,1.4cqw,21px);color:#6B6580;max-width:40ch;text-wrap:pretty;">{{ t.video.sub }}</p>
+      </div>
+      <div style="width:100%;max-width:1040px;">
+        <dc-import name="VideoFrame" t="{{ t.video }}" lang="{{ lang }}" poster="{{ true }}" hint-size="100%,560px"></dc-import>
+      </div>
+    </section>
+
+    <section id="{{ idp }}-how" style="max-width:1344px;margin:0 auto;padding:clamp(64px,7cqw,112px) clamp(20px,3.4cqw,48px) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:clamp(24px,2.6cqw,40px);">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;"><span style="width:10px;height:10px;border-radius:50%;background:#79B8F5;"></span>{{ t.how.eyebrow }}</span>
+        <h2 style="margin:0;font-weight:700;font-size:clamp(32px,3.5cqw,52px);line-height:1.08;text-wrap:balance;">{{ t.how.title }}</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,1.8cqw,28px);">
+        <article style="background:#FFFFFF;border-radius:28px;padding:clamp(20px,2cqw,28px);box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);display:flex;flex-direction:column;gap:16px;">
+          <div style="height:200px;border-radius:20px;background:#FFF8E6;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:18px;box-sizing:border-box;align-content:center;">
+            <sc-for list="{{ kidChips }}" as="k" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:8px;background:#FFFFFF;border-radius:999px;padding:5px 12px 5px 5px;box-shadow:0 3px 0 rgba(45,40,66,0.06);min-width:0;">
+                <img src="{{ k.src }}" alt="" style="width:40px;height:40px;border-radius:50%;background:{{ k.bg }};object-fit:cover;flex:none;">
+                <span style="font-weight:700;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ k.name }}</span>
+              </div>
+            </sc-for>
+            <div style="display:flex;align-items:center;gap:8px;border:2px dashed #CFC8DD;border-radius:999px;padding:4px 12px 4px 4px;min-width:0;">
+              <span style="width:38px;height:38px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;color:#8E72E0;flex:none;">+</span>
+              <span style="font-weight:600;font-size:15px;color:#6B6580;line-height:1.1;">{{ t.how.addKid }}</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="width:56px;height:56px;border-radius:50%;background:#79B8F5;color:#FFFFFF;font-weight:700;font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #4F95DE;flex:none;">1</span>
+            <h3 style="margin:0;font-weight:700;font-size:23px;line-height:1.15;">{{ step1.title }}</h3>
+          </div>
+          <p style="margin:0;font-weight:500;font-size:18px;line-height:1.45;color:#6B6580;">{{ step1.body }}</p>
+        </article>
+        <article style="background:#FFFFFF;border-radius:28px;padding:clamp(20px,2cqw,28px);box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);display:flex;flex-direction:column;gap:16px;">
+          <div style="height:200px;border-radius:20px;background:#FFF8E6;display:flex;align-items:flex-end;justify-content:center;gap:4px;padding:12px 12px 16px;box-sizing:border-box;">
+            <sc-for list="{{ starters }}" as="p" hint-placeholder-count="3">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;">
+                <img src="{{ p.src }}" alt="{{ p.name }}" style="width:100%;max-width:120px;aspect-ratio:1;object-fit:contain;">
+                <span style="padding:3px 10px;border-radius:999px;background:#8FE3C6;font-weight:700;font-size:13px;color:#2D2842;">{{ t.how.free }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="width:56px;height:56px;border-radius:50%;background:#B89CFA;color:#FFFFFF;font-weight:700;font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #8E72E0;flex:none;">2</span>
+            <h3 style="margin:0;font-weight:700;font-size:23px;line-height:1.15;">{{ step2.title }}</h3>
+          </div>
+          <p style="margin:0;font-weight:500;font-size:18px;line-height:1.45;color:#6B6580;">{{ step2.body }}</p>
+        </article>
+        <article style="background:#FFFFFF;border-radius:28px;padding:clamp(20px,2cqw,28px);box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);display:flex;flex-direction:column;gap:16px;">
+          <div style="position:relative;height:200px;border-radius:20px;background:#FFF8E6;overflow:hidden;">
+            <img src="assets/husky-wizard.png" alt="{{ t.how.alt3 }}" style="position:absolute;left:12%;bottom:-6px;height:196px;">
+            <div style="position:absolute;right:16px;top:20px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+              <span data-np-anim="1" style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#FFFFFF;border:2.5px solid #D9A325;font-weight:700;font-size:22px;font-variant-numeric:tabular-nums;animation:npPop .5s ease-out;" key="{{ stars }}"><img src="assets/star.svg" alt="" style="width:22px;height:22px;">{{ stars }}</span>
+              <span style="padding:4px 10px;border-radius:999px;background:#6FD18A;color:#FFFFFF;font-weight:700;font-size:14px;box-shadow:0 3px 0 #4FAE68;">+1 ⭐</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="width:56px;height:56px;border-radius:50%;background:#FFA5C5;color:#FFFFFF;font-weight:700;font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #E4769F;flex:none;">3</span>
+            <h3 style="margin:0;font-weight:700;font-size:23px;line-height:1.15;">{{ step3.title }}</h3>
+          </div>
+          <p style="margin:0;font-weight:500;font-size:18px;line-height:1.45;color:#6B6580;">{{ step3.body }}</p>
+        </article>
+      </div>
+    </section>
+
+    <section style="max-width:1344px;margin:0 auto;padding:clamp(64px,7cqw,112px) clamp(20px,3.4cqw,48px) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:clamp(24px,2.6cqw,36px);">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;"><span style="width:10px;height:10px;border-radius:50%;background:#8FE3C6;"></span>{{ t.games.eyebrow }}</span>
+        <h2 style="margin:0;font-weight:700;font-size:clamp(32px,3.5cqw,52px);line-height:1.08;text-wrap:balance;">{{ t.games.title }}</h2>
+      </div>
+      <div style="display:flex;gap:14px;overflow-x:auto;padding:6px 2px 14px;margin:0 -2px;scroll-snap-type:x mandatory;">
+        <sc-for list="{{ games }}" as="g" hint-placeholder-count="7">
+          <div style="flex:1 0 152px;scroll-snap-align:start;min-height:208px;background:{{ g.color }};border-radius:24px;padding:18px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;box-shadow:0 5px 0 rgba(45,40,66,0.07);">
+            <span aria-hidden="true" style="width:52px;height:52px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#2D2842;">{{ g.emoji }}</span>
+            <span style="font-weight:700;font-size:20px;line-height:1.1;">{{ g.name }}</span>
+            <span style="font-weight:500;font-size:16px;line-height:1.3;">{{ g.sub }}</span>
+            <sc-if value="{{ g.locked }}" hint-placeholder-val="{{ false }}"><span style="margin-top:auto;align-self:flex-start;padding:4px 10px;border-radius:999px;background:#FFFFFF;font-weight:600;font-size:13px;line-height:1.2;">🔒 {{ t.games.locked }}</span></sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0 auto;max-width:62ch;text-align:center;font-weight:500;font-size:18px;line-height:1.5;color:#6B6580;text-wrap:pretty;">{{ t.games.note }}</p>
+    </section>
+
+    <section id="{{ idp }}-kids" style="max-width:1344px;margin:0 auto;padding:clamp(64px,7cqw,112px) clamp(20px,3.4cqw,48px) 0;box-sizing:border-box;">
+      <div style="position:relative;background:#FFE9B0;border-radius:clamp(28px,3cqw,40px);padding:clamp(24px,4cqw,56px) clamp(16px,4cqw,56px);display:flex;flex-direction:column;gap:clamp(24px,3cqw,40px);overflow:hidden;">
+        <div style="position:absolute;inset:12px;border:2px dashed rgba(217,146,26,0.35);border-radius:clamp(20px,2.4cqw,30px);pointer-events:none;"></div>
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;">
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;"><span style="width:10px;height:10px;border-radius:50%;background:#FFA5C5;"></span>{{ t.kids.eyebrow }}</span>
+          <h2 style="margin:0;font-weight:700;font-size:clamp(32px,3.5cqw,52px);line-height:1.08;text-wrap:balance;">{{ t.kids.title }}</h2>
+          <p style="margin:0;font-weight:700;font-size:clamp(22px,2cqw,30px);line-height:1.2;color:#2D2842;text-wrap:balance;">{{ t.kids.caption }}</p>
+          <p style="margin:0;font-weight:500;font-size:18px;line-height:1.45;color:#6B6580;max-width:56ch;text-wrap:pretty;">{{ t.kids.sub }}</p>
+        </div>
+        <div style="position:relative;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:clamp(14px,2.4cqw,36px);">
+          <sc-for list="{{ stickers }}" as="s" hint-placeholder-count="10">
+            <figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:8px;width:{{ s.w }};transform:rotate({{ s.rot }});">
+              <img src="{{ s.src }}" alt="{{ s.name }}" style="width:100%;aspect-ratio:{{ s.ar }};object-fit:contain;filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 6px 8px rgba(45,40,66,0.14));">
+              <figcaption style="display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;">
+                <span style="font-weight:700;font-size:16px;line-height:1.15;">{{ s.name }}</span>
+                <span style="padding:2px 9px;border-radius:999px;background:{{ s.tagBg }};font-weight:600;font-size:12px;color:#2D2842;white-space:nowrap;">{{ s.tag }}</span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;">
+          <span style="font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:#6B6580;">{{ t.kids.badgesTitle }}</span>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+            <sc-for list="{{ badges }}" as="b" hint-placeholder-count="4">
+              <span style="display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 10px;border-radius:999px;background:#FFFFFF;box-shadow:0 4px 0 rgba(45,40,66,0.08);font-weight:600;font-size:17px;"><span aria-hidden="true" style="width:32px;height:32px;border-radius:50%;background:#FFF4D9;display:flex;align-items:center;justify-content:center;font-size:18px;">{{ b.emoji }}</span>{{ b.label }}</span>
+            </sc-for>
+          </div>
+          <p style="margin:0;font-weight:500;font-size:17px;color:#6B6580;text-align:center;">{{ t.kids.daily }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="{{ idp }}-parents" style="max-width:1344px;margin:0 auto;padding:clamp(64px,7cqw,112px) clamp(20px,3.4cqw,48px) 0;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,4cqw,64px);">
+      <div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:20px;">
+        <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;"><span style="width:10px;height:10px;border-radius:50%;background:#B89CFA;"></span>{{ t.parents.eyebrow }}</span>
+        <h2 style="margin:0;font-weight:700;font-size:clamp(32px,3.3cqw,48px);line-height:1.08;text-wrap:balance;">{{ t.parents.title }}</h2>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;">
+          <sc-for list="{{ t.parents.bullets }}" as="b" hint-placeholder-count="3">
+            <li style="display:flex;align-items:flex-start;gap:12px;font-weight:500;font-size:19px;line-height:1.4;"><span aria-hidden="true" style="flex:none;width:28px;height:28px;border-radius:50%;background:#EFE8FE;color:#8E72E0;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;margin-top:-1px;">✓</span>{{ b }}</li>
+          </sc-for>
+        </ul>
+        <p style="margin:0;font-weight:700;font-size:19px;">{{ t.parents.note }}</p>
+        <a href="{{ links.parent }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;background:#B89CFA;color:#FFFFFF;font-weight:700;font-size:21px;text-decoration:none;box-shadow:0 5px 0 #8E72E0;transition:transform .12s, box-shadow .12s;" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #8E72E0;color:#FFFFFF;" style-active="transform:translateY(1px);box-shadow:0 4px 0 #8E72E0;"><span aria-hidden="true">👤</span>{{ t.parents.cta }}</a>
+      </div>
+      <div style="flex:1.7 1 560px;min-width:0;background:#FFFFFF;border-radius:28px;padding:clamp(16px,2cqw,28px);box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);display:flex;flex-direction:column;gap:18px;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+          <img src="assets/kitty.png" alt="" style="width:48px;height:48px;border-radius:50%;background:#FFE6EE;object-fit:cover;">
+          <div style="display:flex;flex-direction:column;margin-right:auto;">
+            <span style="font-weight:700;font-size:21px;">{{ t.parents.dash.heading }}</span>
+            <span style="font-weight:500;font-size:14px;color:#6B6580;">{{ t.parents.dash.age }}</span>
+          </div>
+          <div style="display:flex;gap:6px;padding:4px;background:#FFF8E6;border-radius:999px;">
+            <span style="padding:6px 14px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:15px;box-shadow:0 2px 0 rgba(45,40,66,0.08);">{{ dashKid0 }}</span>
+            <span style="padding:6px 14px;border-radius:999px;font-weight:600;font-size:15px;color:#6B6580;">{{ dashKid1 }}</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,128px),1fr));gap:10px;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div style="background:{{ s.bg }};border-radius:20px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0;">
+              <span aria-hidden="true" style="font-size:20px;">{{ s.emoji }}</span>
+              <span style="font-weight:700;font-size:26px;line-height:1.15;">{{ s.value }}</span>
+              <span style="font-weight:600;font-size:14px;line-height:1.2;color:#6B6580;">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px;">
+          <div style="border:1px solid rgba(45,40,66,0.08);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-weight:700;font-size:16px;">{{ t.parents.dash.mastery }}</span>
+            <sc-for list="{{ mastery }}" as="r" hint-placeholder-count="5">
+              <div style="display:flex;flex-direction:column;gap:5px;">
+                <div style="display:flex;align-items:baseline;gap:8px;font-size:14px;">
+                  <span aria-hidden="true">{{ r.emoji }}</span>
+                  <span style="font-weight:600;margin-right:auto;">{{ r.name }}</span>
+                  <span style="font-weight:600;color:{{ r.statusColor }};text-align:right;">{{ r.status }}</span>
+                </div>
+                <div style="height:10px;border-radius:99px;background:#F1EDF5;overflow:hidden;"><div style="width:{{ r.pct }};height:100%;border-radius:99px;background:{{ r.color }};"></div></div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border:1px solid rgba(45,40,66,0.08);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-weight:700;font-size:16px;">{{ t.parents.dash.play }}</span>
+            <div style="position:relative;flex:1;min-height:150px;display:flex;align-items:flex-end;gap:8px;padding-top:18px;">
+              <div style="position:absolute;left:0;right:0;bottom:calc({{ limitPct }} + 22px);border-top:2px dashed #F6B73C;"><span style="position:absolute;right:0;top:-20px;font-weight:700;font-size:12px;color:#D9921A;">{{ t.parents.dash.limitVal }}</span></div>
+              <sc-for list="{{ bars }}" as="b" hint-placeholder-count="7">
+                <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;">
+                  <span style="font-weight:600;font-size:12px;color:#6B6580;">{{ b.v }}</span>
+                  <div style="width:100%;max-width:30px;height:{{ b.h }};min-height:4px;border-radius:8px;background:{{ b.c }};"></div>
+                  <span style="font-weight:600;font-size:12px;color:#A8A2BD;height:14px;">{{ b.d }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:#FFF4D9;border-radius:18px;padding:12px 12px 12px 16px;">
+          <span aria-hidden="true" style="font-size:20px;">⏱️</span>
+          <span style="font-weight:600;font-size:17px;margin-right:auto;">{{ t.parents.dash.limit }} <strong style="font-weight:700;">{{ t.parents.dash.limitVal }}</strong></span>
+          <button type="button" style="padding:8px 18px;border-radius:999px;border:none;background:#FFFFFF;font-family:inherit;font-weight:700;font-size:16px;color:#2D2842;box-shadow:0 4px 0 #E6E1F0;cursor:pointer;" style-hover="transform:translateY(-2px);">{{ t.parents.dash.change }}</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="{{ idp }}-teachers" style="max-width:1344px;margin:0 auto;padding:clamp(64px,7cqw,112px) clamp(20px,3.4cqw,48px) 0;box-sizing:border-box;display:flex;flex-wrap:wrap;flex-direction:row-reverse;align-items:center;gap:clamp(28px,4cqw,64px);">
+      <div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:20px;">
+        <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;"><span style="width:10px;height:10px;border-radius:50%;background:#FFAD8C;"></span>{{ t.teachers.eyebrow }}</span>
+        <h2 style="margin:0;font-weight:700;font-size:clamp(32px,3.3cqw,48px);line-height:1.08;text-wrap:balance;">{{ t.teachers.title }}</h2>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;">
+          <sc-for list="{{ t.teachers.bullets }}" as="b" hint-placeholder-count="4">
+            <li style="display:flex;align-items:flex-start;gap:12px;font-weight:500;font-size:19px;line-height:1.4;"><span aria-hidden="true" style="flex:none;width:28px;height:28px;border-radius:50%;background:#FFE6DA;color:#E07A55;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;margin-top:-1px;">✓</span>{{ b }}</li>
+          </sc-for>
+        </ul>
+        <a href="{{ links.teacher }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;background:#FFFFFF;color:#2D2842;font-weight:700;font-size:21px;text-decoration:none;box-shadow:0 5px 0 #E6E1F0;transition:transform .12s, box-shadow .12s;" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #E6E1F0;color:#2D2842;" style-active="transform:translateY(1px);box-shadow:0 4px 0 #E6E1F0;"><span aria-hidden="true">🎓</span>{{ t.teachers.cta }}</a>
+      </div>
+      <div style="flex:1.7 1 560px;min-width:0;background:#FFFFFF;border-radius:28px;padding:clamp(16px,2cqw,28px);box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);display:flex;flex-direction:column;gap:18px;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;">
+          <span style="font-weight:700;font-size:21px;margin-right:auto;">🎓 {{ t.teachers.roster.className }}</span>
+          <div style="display:flex;align-items:center;gap:8px;padding:5px 5px 5px 14px;border-radius:999px;border:2.5px dashed #F6B73C;background:#FFF4D9;">
+            <span style="font-weight:600;font-size:13px;color:#6B6580;">{{ t.teachers.roster.codeLabel }}</span>
+            <span style="font-weight:700;font-size:20px;letter-spacing:.14em;">ABCD23</span>
+            <button type="button" onClick="{{ copyCode }}" style="padding:6px 14px;border-radius:999px;border:none;background:#79B8F5;color:#FFFFFF;font-family:inherit;font-weight:700;font-size:14px;box-shadow:0 3px 0 #4F95DE;cursor:pointer;" style-hover="transform:translateY(-1px);">{{ copyLabel }}</button>
+          </div>
+        </div>
+        <div role="table" style="display:flex;flex-direction:column;">
+          <div role="row" style="display:grid;grid-template-columns:minmax(0,2.3fr) repeat(3,minmax(0,1fr));gap:8px;padding:0 6px 8px;border-bottom:1px solid rgba(45,40,66,0.08);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#6B6580;">
+            <sc-for list="{{ t.teachers.roster.cols }}" as="c" hint-placeholder-count="4"><span role="columnheader">{{ c }}</span></sc-for>
+          </div>
+          <sc-for list="{{ roster }}" as="s" hint-placeholder-count="5">
+            <div role="row" style="display:grid;grid-template-columns:minmax(0,2.3fr) repeat(3,minmax(0,1fr));gap:8px;align-items:center;padding:10px 6px;border-bottom:1px solid rgba(45,40,66,0.08);font-size:16px;">
+              <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                <span style="flex:none;width:34px;height:34px;border-radius:50%;background:{{ s.bg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">{{ s.ini }}</span>
+                <div style="display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0;">
+                  <span style="font-weight:700;">{{ s.name }}</span>
+                  <sc-if value="{{ s.flag }}" hint-placeholder-val="{{ false }}"><span style="padding:2px 8px;border-radius:999px;background:{{ s.flagBg }};color:{{ s.flagInk }};font-weight:700;font-size:10.5px;letter-spacing:.04em;line-height:1.35;">{{ s.flagLabel }}</span></sc-if>
+                </div>
+              </div>
+              <span style="font-weight:600;">{{ s.time }}</span>
+              <span style="font-weight:600;">{{ s.acc }}</span>
+              <span style="font-weight:600;">🔥 {{ s.streak }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-weight:700;font-size:16px;">{{ t.teachers.roster.heat }}</span>
+          <div style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(5,minmax(0,1fr));gap:6px;font-size:12px;">
+            <span></span>
+            <sc-for list="{{ t.teachers.roster.topics }}" as="tp" hint-placeholder-count="5"><span style="font-weight:700;color:#6B6580;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ tp }}</span></sc-for>
+            <sc-for list="{{ heatCells }}" as="h" hint-placeholder-count="30">
+              <span style="display:flex;align-items:center;justify-content:{{ h.justify }};height:32px;border-radius:10px;background:{{ h.bg }};color:{{ h.ink }};font-weight:700;font-size:{{ h.fs }};overflow:hidden;white-space:nowrap;">{{ h.label }}</span>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px;">
+            <sc-for list="{{ legend }}" as="g" hint-placeholder-count="4"><span style="display:inline-flex;align-items:center;gap:6px;font-weight:500;font-size:13px;color:#6B6580;"><span style="width:14px;height:14px;border-radius:4px;background:{{ g.bg }};"></span>{{ g.label }}</span></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FFF8E6;border-radius:18px;padding:12px 14px;">
+          <span style="font-weight:700;font-size:15px;margin-right:4px;">⚙️ {{ t.teachers.roster.settingsTitle }}</span>
+          <sc-for list="{{ t.teachers.roster.settings }}" as="st" hint-placeholder-count="3"><span style="padding:5px 12px;border-radius:999px;background:#FFFFFF;font-weight:600;font-size:14px;box-shadow:0 2px 0 rgba(45,40,66,0.06);">{{ st }}</span></sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1344px;margin:0 auto;padding:clamp(64px,7cqw,112px) clamp(20px,3.4cqw,48px) 0;box-sizing:border-box;">
+      <ul style="list-style:none;margin:0;padding:clamp(18px,2cqw,26px) clamp(18px,2.4cqw,32px);background:#FFF8E6;border-radius:28px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px clamp(20px,2.4cqw,36px);">
+        <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="5">
+          <li style="display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;line-height:1.3;"><span aria-hidden="true" style="flex:none;width:34px;height:34px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:17px;">{{ tr.emoji }}</span>{{ tr.label }}</li>
+        </sc-for>
+      </ul>
+    </section>
+
+    <section style="max-width:1344px;margin:0 auto;padding:clamp(64px,7cqw,112px) clamp(20px,3.4cqw,48px) clamp(48px,5cqw,80px);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(8px,3cqw,48px);">
+      <div style="position:relative;flex:0 0 auto;width:clamp(240px,24cqw,340px);height:clamp(250px,25cqw,350px);">
+        <div style="position:absolute;inset:10% 0 0 0;border-radius:50%;background:#FFD78A;opacity:.6;filter:blur(36px);"></div>
+        <div data-np-anim="1" style="position:absolute;left:0;right:0;bottom:0;animation:npBob 3s ease-in-out infinite;">
+          <img src="assets/bear.png" alt="{{ t.final.alt }}" style="width:100%;display:block;">
+        </div>
+        <div style="position:absolute;right:-12%;top:2%;max-width:190px;background:#FFFFFF;border-radius:24px 24px 24px 6px;padding:12px 18px;font-weight:600;font-size:18px;line-height:1.25;box-shadow:0 10px 30px rgba(45,40,66,0.06), 0 2px 6px rgba(45,40,66,0.04);">{{ t.final.bubble }}</div>
+      </div>
+      <div style="flex:0 1 520px;min-width:0;display:flex;flex-direction:column;gap:18px;align-items:flex-start;">
+        <h2 style="margin:0;font-weight:700;font-size:clamp(42px,4.6cqw,68px);line-height:1.04;">{{ t.final.title }}</h2>
+        <p style="margin:0;font-weight:500;font-size:clamp(18px,1.5cqw,21px);line-height:1.45;color:#6B6580;text-wrap:pretty;">{{ t.final.sub }}</p>
+        <a href="{{ links.parent }}" style="display:inline-flex;align-items:center;gap:10px;padding:clamp(15px,1.25cqw,18px) clamp(24px,2.1cqw,30px);border-radius:999px;background:#79B8F5;color:#FFFFFF;font-weight:700;font-size:clamp(20px,1.8cqw,26px);line-height:1.1;text-decoration:none;box-shadow:0 5px 0 #4F95DE;transition:transform .12s, box-shadow .12s;" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #4F95DE;color:#FFFFFF;" style-active="transform:translateY(1px);box-shadow:0 4px 0 #4F95DE;"><span aria-hidden="true">👤</span>{{ t.final.cta }}</a>
+        <p style="margin:0;font-weight:500;font-size:17px;color:#6B6580;">{{ t.final.loginPrompt }} <a href="{{ links.login }}" style="font-weight:700;color:#4F95DE;">{{ t.final.login }}</a></p>
+      </div>
+    </section>
+
+    <footer style="border-top:1px solid rgba(45,40,66,0.08);">
+      <div style="max-width:1344px;margin:0 auto;padding:28px clamp(20px,3.4cqw,48px) 36px;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;">
+        <div style="display:flex;flex-direction:column;gap:4px;margin-right:auto;">
+          <span style="display:flex;align-items:center;gap:6px;font-weight:700;font-size:22px;"><img src="assets/star.svg" alt="" style="width:26px;height:26px;">NumiPaws</span>
+          <span style="font-weight:500;font-size:15px;color:#6B6580;">{{ t.footer.tagline }}</span>
+        </div>
+        <nav style="display:flex;flex-wrap:wrap;gap:6px 20px;">
+          <a href="#" style="font-weight:600;font-size:16px;color:#2D2842;text-decoration:none;" style-hover="color:#4F95DE;">{{ t.footer.privacy }}</a>
+          <a href="#" style="font-weight:600;font-size:16px;color:#2D2842;text-decoration:none;" style-hover="color:#4F95DE;">{{ t.footer.terms }}</a>
+          <a href="#" style="font-weight:600;font-size:16px;color:#2D2842;text-decoration:none;" style-hover="color:#4F95DE;">{{ t.footer.contact }}</a>
+        </nav>
+        <dc-import name="LangSwitch" lang="{{ lang }}" on-change="{{ setLang }}" variant="full" up="{{ true }}" hint-size="140px,40px"></dc-import>
+        <span style="font-weight:500;font-size:14px;color:#A8A2BD;">{{ t.footer.copyright }}</span>
+      </div>
+    </footer>
+  </sc-if>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ro&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ro'&quot;},&quot;headline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;a&quot;,&quot;b&quot;],&quot;default&quot;:&quot;a&quot;,&quot;tsType&quot;:&quot;'a'|'b'&quot;},&quot;persist&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;only&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;nav&quot;,&quot;hero&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;menuOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;idp&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { lang: null, menu: null, stars: 24, copied: false, ready: !!window.NP_COPY };
+  componentDidMount() {
+    if (this.props.persist) { try { const s = localStorage.getItem('numipaws.lang'); if (s === 'en' || s === 'ro') this.setState({ lang: s }); } catch (e) {} }
+    if (!window.NP_COPY) this.poll = setInterval(() => { if (window.NP_COPY) { clearInterval(this.poll); this.setState({ ready: true }); } }, 50);
+    if (!this.props.only) this.tick = setInterval(() => this.setState(s => ({ stars: s.stars >= 36 ? 24 : s.stars + 1 })), 1400);
+  }
+  componentWillUnmount() { clearInterval(this.poll); clearInterval(this.tick); clearTimeout(this.ct); }
+  renderVals() {
+    const C = window.NP_COPY;
+    if (!C) return { ready: false };
+    const lang = this.state.lang || this.props.lang || 'en';
+    const t = C[lang];
+    const m = !!this.props.mobile, only = this.props.only;
+    const idp = this.props.idp || 'np';
+    const q = 'lang=' + lang, app = 'https://app.numipaws.com/#/';
+    const menuOpen = this.state.menu ?? !!this.props.menuOpen;
+    const setLang = (l) => { this.setState({ lang: l }); if (this.props.persist) { try { localStorage.setItem('numipaws.lang', l); } catch (e) {} } };
+    const topic = [
+      { color: '#FFE08A', emoji: '🧮' }, { color: '#8FE3C6', emoji: '➕' }, { color: '#79B8F5', emoji: '➖' },
+      { color: '#B89CFA', emoji: '✖️' }, { color: '#FFAD8C', emoji: '➗' }, { color: '#FF8195', emoji: '¼' }, { color: '#FFB6C9', emoji: '🎲' }
+    ];
+    const k = t.kids;
+    const stickers = [
+      { src: 'assets/bear.png', name: k.pets[0], tag: k.free, tagBg: '#8FE3C6', w: 'clamp(96px,11cqw,150px)', rot: '-4deg', ar: '1' },
+      { src: 'assets/husky.png', name: k.pets[1], tag: k.free, tagBg: '#8FE3C6', w: 'clamp(96px,11cqw,150px)', rot: '3deg', ar: '1' },
+      { src: 'assets/kitty.png', name: k.pets[2], tag: k.free, tagBg: '#8FE3C6', w: 'clamp(96px,11cqw,150px)', rot: '-2deg', ar: '1' },
+      { src: 'assets/foxy.png', name: k.pets[3], tag: '⭐ ' + k.shop, tagBg: '#FFFFFF', w: 'clamp(96px,11cqw,150px)', rot: '5deg', ar: '1' },
+      { src: 'assets/bunny.png', name: k.pets[4], tag: '⭐ ' + k.shop, tagBg: '#FFFFFF', w: 'clamp(96px,11cqw,150px)', rot: '-3deg', ar: '1' },
+      { src: 'assets/item-tiara.png', name: k.items[0], tag: '⭐ ' + k.shop, tagBg: '#FFFFFF', w: 'clamp(84px,8.5cqw,120px)', rot: '6deg', ar: '738/678' },
+      { src: 'assets/item-wizard-hat.png', name: k.items[1], tag: '⭐ ' + k.shop, tagBg: '#FFFFFF', w: 'clamp(84px,8.5cqw,120px)', rot: '-5deg', ar: '574/480' },
+      { src: 'assets/item-helmet.png', name: k.items[2], tag: '⭐ ' + k.shop, tagBg: '#FFFFFF', w: 'clamp(84px,8.5cqw,120px)', rot: '4deg', ar: '738/678' },
+      { src: 'assets/kitty-tiara.png', name: k.dressed[0], tag: '✨', tagBg: '#FFE6EE', w: 'clamp(110px,12cqw,165px)', rot: '-3deg', ar: '1056/1210' },
+      { src: 'assets/husky-tactical.png', name: k.dressed[1], tag: '✨', tagBg: '#FFE6EE', w: 'clamp(110px,12cqw,165px)', rot: '3deg', ar: '1056/1080' }
+    ];
+    const D = t.parents.dash;
+    const mins = [12, 18, 0, 20, 15, 9, 10], maxM = 24;
+    const st = D.status;
+    const mrows = [[100, 'ma'], [82, 'mi'], [40, 'hi'], [18, 'mi'], [0, 'none']];
+    const statusColor = { ma: '#2F7D47', mi: '#8A6510', hi: '#A9482A', none: '#A8A2BD' };
+    const R = t.teachers.roster;
+    const flagS = { help: ['#FFE1D3', '#A9482A'], top: ['#FFEAB0', '#7A5A0C'], away: ['#EEEBF3', '#6B6580'] };
+    const students = [
+      ['Ana P.', '#DCEBFC', '52m', '94%', 8, 'top', ['ma', 'ma', 'ma', 'mi', 'mi']],
+      ['Ben T.', '#EFE8FE', '38m', '81%', 4, null, ['ma', 'mi', 'mi', 'none', 'none']],
+      ['Chloe R.', '#FFE6EE', '25m', '58%', 2, 'help', ['mi', 'hi', 'hi', 'none', 'none']],
+      ['David M.', '#DDF5EC', '0m', '—', 0, 'away', ['none', 'none', 'none', 'none', 'none']],
+      ['Eva S.', '#FFE6DA', '44m', '88%', 6, null, ['ma', 'ma', 'mi', 'mi', 'none']]
+    ];
+    const cell = { none: ['#EEEBF3', '#A8A2BD', '—'], hi: ['#FFD3BF', '#A9482A', 'Hi'], mi: ['#FFE9B0', '#8A6510', 'Mi'], ma: ['#C7EFD3', '#2F7D47', 'Ma'] };
+    const heatCells = [];
+    students.forEach(s => {
+      heatCells.push({ label: s[0], bg: 'transparent', ink: '#2D2842', fs: '13px', justify: 'flex-start' });
+      s[6].forEach(c => heatCells.push({ label: cell[c][2], bg: cell[c][0], ink: cell[c][1], fs: '12px', justify: 'center' }));
+    });
+    return {
+      ready: true, t, lang, idp, setLang,
+      isDesktop: !m, isMobile: m,
+      showHero: only !== 'nav', showRest: !only,
+      headline: this.props.headline === 'b' ? t.hero.titleB : t.hero.titleA,
+      links: { login: app + 'login?' + q, parent: app + 'signup?role=parent&' + q, teacher: app + 'signup?role=teacher&' + q },
+      navLinks: [
+        { label: t.nav.parents, href: '#' + idp + '-parents' }, { label: t.nav.kids, href: '#' + idp + '-kids' },
+        { label: t.nav.teachers, href: '#' + idp + '-teachers' }, { label: t.nav.how, href: '#' + idp + '-how' }
+      ],
+      menuOpen, menuIcon: menuOpen ? '✕' : '☰', menuLabel: menuOpen ? t.nav.close : t.nav.menu,
+      toggleMenu: () => this.setState({ menu: !menuOpen }), closeMenu: () => this.setState({ menu: false }),
+      sparklesD: [['40px', '60px', '12px', '#F6C84E'], ['500px', '40px', '10px', '#FFAD8C'], ['20px', '300px', '9px', '#8FE3C6'], ['470px', '330px', '12px', '#FFA5C5'], ['250px', '20px', '8px', '#8FE3C6'], ['130px', '150px', '7px', '#FFA5C5'], ['540px', '220px', '8px', '#F6C84E']].map(a => ({ x: a[0], y: a[1], r: a[2], c: a[3] })),
+      sparklesM: [['30px', '150px', '9px', '#F6C84E'], ['300px', '30px', '8px', '#FFAD8C'], ['330px', '120px', '7px', '#8FE3C6'], ['200px', '14px', '6px', '#FFA5C5']].map(a => ({ x: a[0], y: a[1], r: a[2], c: a[3] })),
+      step1: t.how.steps[0], step2: t.how.steps[1], step3: t.how.steps[2],
+      kidChips: [{ src: 'assets/bear.png', bg: '#DCEBFC' }, { src: 'assets/husky.png', bg: '#EFE8FE' }, { src: 'assets/kitty.png', bg: '#FFE6EE' }].map((x, i) => ({ ...x, name: t.how.kids[i] })),
+      starters: [{ src: 'assets/bear.png', name: k.pets[0] }, { src: 'assets/husky.png', name: k.pets[1] }, { src: 'assets/kitty.png', name: k.pets[2] }],
+      stars: this.state.stars,
+      games: t.games.list.map((g, i) => ({ ...g, ...topic[i], locked: i === 4 || i === 5 })),
+      stickers,
+      badges: ['⭐', '🔥', '⚡', '🎖️'].map((e, i) => ({ emoji: e, label: k.badges[i] })),
+      dashKid0: D.kids[0], dashKid1: D.kids[1],
+      stats: D.stats.map((s, i) => ({ ...s, emoji: ['⏱️', '🎯', '🔥', '⭐'][i], bg: ['#E3F0FD', '#DDF5EC', '#FFE6DA', '#FFF4D9'][i] })),
+      mastery: mrows.map((r, i) => ({ name: t.games.list[i].name, emoji: topic[i].emoji, color: topic[i].color, pct: r[0] + '%', status: st[r[1]], statusColor: statusColor[r[1]] })),
+      bars: mins.map((v, i) => ({ v: v || '', h: Math.round(v / maxM * 100) + '%', c: i === 4 ? '#8E72E0' : '#B89CFA', d: D.days[i] })),
+      limitPct: Math.round(20 / maxM * 100) + '%',
+      copyLabel: this.state.copied ? R.copied + ' ✓' : R.copy,
+      copyCode: () => { try { navigator.clipboard && navigator.clipboard.writeText('ABCD23'); } catch (e) {} this.setState({ copied: true }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: false }), 1600); },
+      roster: students.map(s => ({ name: s[0], ini: s[0].split(' ').map(w => w[0]).join(''), bg: s[1], time: s[2], acc: s[3], streak: s[4] + R.days, flag: !!s[5], flagLabel: s[5] ? R.flags[s[5]] : '', flagBg: s[5] ? flagS[s[5]][0] : '', flagInk: s[5] ? flagS[s[5]][1] : '' })),
+      heatCells,
+      legend: ['none', 'hi', 'mi', 'ma'].map((c, i) => ({ bg: cell[c][0], label: cell[c][2] + ' · ' + R.legend[i] })),
+      trust: ['🌐', '🧒', '⏱️', '🗣️', '🚫'].map((e, i) => ({ emoji: e, label: t.trust.items[i] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

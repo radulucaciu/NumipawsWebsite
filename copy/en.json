@@ -1,0 +1,312 @@
+{
+  "meta": {
+    "title": "NumiPaws · Math adventures with pets they love",
+    "description": "A free browser math game for kids aged 5–10. Short 10-question rounds, stars to earn, and a pet to dress up."
+  },
+  "lang": {
+    "label": "Language",
+    "en": "English",
+    "ro": "Română"
+  },
+  "nav": {
+    "parents": "For parents",
+    "kids": "For kids",
+    "teachers": "For teachers",
+    "how": "How it works",
+    "login": "Log in",
+    "signup": "Sign up free",
+    "menu": "Menu",
+    "close": "Close menu",
+    "home": "NumiPaws home",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "titleA": "Math practice kids actually ask for.",
+    "titleB": "Math adventures with pets they love.",
+    "sub": "Kids play quick 10-question rounds and spend the stars they earn on hats for their pet.",
+    "ctaParent": "Create a parent account",
+    "ctaTeacher": "I'm a teacher",
+    "chips": [
+      "Ages 5–10",
+      "Plays in the browser",
+      "English & Română"
+    ],
+    "bubble": "Ready to play? 🐾",
+    "altHusky": "Husky, a grey and white puppy, waving hello",
+    "altKitty": "Kitty peeking in from the side",
+    "altBear": "Bear peeking in from below",
+    "altBunny": "Bunny peeking in from the top"
+  },
+  "video": {
+    "eyebrow": "Take a look",
+    "title": "This is what your kid sees.",
+    "sub": "Their pet, today's quest, and two big buttons: Play and Shop.",
+    "caption": "Watch a round",
+    "play": "Play video",
+    "posterLabel": "Poster image or video",
+    "kid": "Little Paw",
+    "lvl": "Lvl 3",
+    "quest": "TODAY'S QUEST · 3/10",
+    "bubble": "Adding is putting things together!",
+    "btnPlay": "Play",
+    "btnShop": "Shop",
+    "next": "NEXT LEVEL",
+    "xp": "176 / 200 XP",
+    "alt": "The NumiPaws home screen: Husky in a wizard hat, today's quest at 3 of 10, Play and Shop buttons",
+    "note": "Plays from YouTube (youtube-nocookie.com) when you press play."
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "Up and playing in three steps.",
+    "steps": [
+      {
+        "title": "One account for the family",
+        "body": "A parent creates one account and adds up to 4 kids."
+      },
+      {
+        "title": "Pick a pet",
+        "body": "Each kid picks a free starter pet: Bear, Husky or Kitty."
+      },
+      {
+        "title": "Play, earn, dress up",
+        "body": "They play 10-question rounds, earn stars, and dress their pet."
+      }
+    ],
+    "kids": [
+      "Maya",
+      "Leo",
+      "Sam"
+    ],
+    "addKid": "Add kid",
+    "free": "Free",
+    "alt3": "Husky wearing the wizard hat"
+  },
+  "games": {
+    "eyebrow": "The seven games",
+    "title": "Seven ways to practise.",
+    "list": [
+      {
+        "name": "Counting",
+        "sub": "Count what you see"
+      },
+      {
+        "name": "Addition",
+        "sub": "Put them together"
+      },
+      {
+        "name": "Subtraction",
+        "sub": "Take some away"
+      },
+      {
+        "name": "Multiplication",
+        "sub": "Times tables to 12"
+      },
+      {
+        "name": "Division",
+        "sub": "Share it out fairly"
+      },
+      {
+        "name": "Fractions",
+        "sub": "Halves, thirds, quarters"
+      },
+      {
+        "name": "Mixed Practice",
+        "sub": "A bit of everything"
+      }
+    ],
+    "locked": "Unlocks later",
+    "note": "Difficulty climbs on its own as your kid improves. Addition goes from within 10, to within 20, to within 100, to carrying. Division and Fractions unlock later."
+  },
+  "kids": {
+    "eyebrow": "For kids",
+    "title": "Every right answer earns stars.",
+    "caption": "Stars buy hats. Hats are very important.",
+    "sub": "Three in a row starts a combo. Stars buy pets, hats, outfits, capes, held items and scenes, and the pet wears what the kid buys.",
+    "pets": [
+      "Bear",
+      "Husky",
+      "Kitty",
+      "Foxy",
+      "Bunny"
+    ],
+    "free": "Free",
+    "shop": "In the shop",
+    "items": [
+      "Tiara",
+      "Wizard hat",
+      "SpecOps helmet"
+    ],
+    "dressed": [
+      "Kitty in the tiara",
+      "Husky in SpecOps gear"
+    ],
+    "badgesTitle": "Badges to collect",
+    "badges": [
+      "First correct",
+      "7-day streak",
+      "10 in a row",
+      "Addition · Mastered"
+    ],
+    "daily": "New every day: a daily quest and a daily challenge."
+  },
+  "parents": {
+    "eyebrow": "For parents",
+    "title": "See what they practised this week.",
+    "bullets": [
+      "See what they practised this week.",
+      "Spot the topic that needs help.",
+      "Set a daily time limit."
+    ],
+    "note": "One account, up to 4 kids.",
+    "cta": "Create a parent account",
+    "dash": {
+      "heading": "Maya's week",
+      "age": "Age 7",
+      "kids": [
+        "Maya",
+        "Leo"
+      ],
+      "stats": [
+        {
+          "label": "Time this week",
+          "value": "1h 24m"
+        },
+        {
+          "label": "Accuracy",
+          "value": "86%"
+        },
+        {
+          "label": "Day streak",
+          "value": "5 days"
+        },
+        {
+          "label": "Stars earned",
+          "value": "312"
+        }
+      ],
+      "mastery": "Mastery map",
+      "play": "Play time",
+      "min": "min",
+      "days": [
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S",
+        "S"
+      ],
+      "status": {
+        "ma": "Mastered",
+        "mi": "Progressing",
+        "hi": "Needs help",
+        "none": "Not started"
+      },
+      "limit": "Daily limit:",
+      "limitVal": "20 min/day",
+      "change": "Change"
+    }
+  },
+  "teachers": {
+    "eyebrow": "For teachers",
+    "title": "Your whole class on one screen.",
+    "bullets": [
+      "Create a class in one click.",
+      "Share a code or link. No student emails needed.",
+      "Set the number ranges for the whole class.",
+      "See who needs help before the test does."
+    ],
+    "cta": "Create a teacher account",
+    "roster": {
+      "className": "2nd Grade — Room 12",
+      "codeLabel": "Join code",
+      "copy": "Copy",
+      "copied": "Copied",
+      "link": "Copy invite link",
+      "cols": [
+        "Student",
+        "Time",
+        "Accuracy",
+        "Streak"
+      ],
+      "flags": {
+        "help": "NEEDS HELP",
+        "top": "TOP OF CLASS",
+        "away": "NOT LOGGED IN"
+      },
+      "heat": "Mastery by topic",
+      "topics": [
+        "Count",
+        "Add",
+        "Sub",
+        "Mult",
+        "Div"
+      ],
+      "legend": [
+        "Not started",
+        "Needs help",
+        "Progressing",
+        "Mastered"
+      ],
+      "settingsTitle": "Class difficulty",
+      "settings": [
+        "Addition within 20",
+        "Carrying on",
+        "Times tables to 5"
+      ],
+      "days": "d"
+    }
+  },
+  "trust": {
+    "items": [
+      "Plays in any browser, nothing to install",
+      "Built for ages 5–10",
+      "Parent-controlled play time",
+      "English and Romanian",
+      "No ads"
+    ]
+  },
+  "final": {
+    "title": "Ready to play?",
+    "sub": "It's free, and it runs in the browser you're using right now.",
+    "bubble": "Let's count some stars! ⭐",
+    "cta": "Create a parent account",
+    "loginPrompt": "Already have an account?",
+    "login": "Log in",
+    "alt": "Bear waving"
+  },
+  "footer": {
+    "tagline": "Math adventures with pets they love.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "copyright": "© 2026 NumiPaws"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "draft": "Draft, text pending.",
+    "sections": [
+      "What we collect",
+      "Children",
+      "YouTube embed",
+      "Contact"
+    ],
+    "back": "Back to the home page"
+  },
+  "terms": {
+    "title": "Terms",
+    "draft": "Draft, text pending.",
+    "sections": [
+      "Service",
+      "Accounts",
+      "Acceptable use",
+      "Contact"
+    ],
+    "back": "Back to the home page"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you were looking for does not exist.",
+    "home": "Go to the home page"
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "meta": {
+    "title": "NumiPaws · Aventuri matematice cu animăluțele preferate",
+    "description": "Un joc gratuit de matematică în browser pentru copii de 5–10 ani. Runde scurte de 10 întrebări, stele de câștigat și un animăluț de îmbrăcat."
+  },
+  "lang": {
+    "label": "Limbă",
+    "en": "English",
+    "ro": "Română"
+  },
+  "nav": {
+    "parents": "Pentru părinți",
+    "kids": "Pentru copii",
+    "teachers": "Pentru profesori",
+    "how": "Cum funcționează",
+    "login": "Conectare",
+    "signup": "Înscriere gratuită",
+    "menu": "Meniu",
+    "close": "Închide meniul",
+    "home": "Pagina principală NumiPaws",
+    "skip": "Sari la conținut"
+  },
+  "hero": {
+    "titleA": "Matematica pe care copiii o cer singuri.",
+    "titleB": "Aventuri matematice cu animăluțele preferate.",
+    "sub": "Copiii joacă runde scurte de 10 întrebări și dau stelele câștigate pe pălării pentru animăluțul lor.",
+    "ctaParent": "Creează cont de părinte",
+    "ctaTeacher": "Sunt profesor",
+    "chips": [
+      "5–10 ani",
+      "Se joacă în browser",
+      "English și Română"
+    ],
+    "bubble": "Gata de joacă? 🐾",
+    "altHusky": "Husky, un cățel gri cu alb, care face cu lăbuța",
+    "altKitty": "Kitty care trage cu ochiul din lateral",
+    "altBear": "Bear care trage cu ochiul de jos",
+    "altBunny": "Bunny care trage cu ochiul de sus"
+  },
+  "video": {
+    "eyebrow": "Aruncă o privire",
+    "title": "Asta vede copilul tău.",
+    "sub": "Animăluțul lui, misiunea zilei și două butoane mari: Joacă și Magazin.",
+    "caption": "Urmărește o rundă",
+    "play": "Pornește video",
+    "posterLabel": "Imagine poster sau video",
+    "kid": "Little Paw",
+    "lvl": "Nv. 3",
+    "quest": "MISIUNEA ZILEI · 3/10",
+    "bubble": "Adunarea înseamnă să pui lucrurile laolaltă!",
+    "btnPlay": "Joacă",
+    "btnShop": "Magazin",
+    "next": "NIVELUL URMĂTOR",
+    "xp": "176 / 200 XP",
+    "alt": "Ecranul principal NumiPaws: Husky cu pălărie de vrăjitor, misiunea zilei la 3 din 10, butoanele Joacă și Magazin",
+    "note": "Se redă de pe YouTube (youtube-nocookie.com) când apeși pe play."
+  },
+  "how": {
+    "eyebrow": "Cum funcționează",
+    "title": "Gata de joacă în trei pași.",
+    "steps": [
+      {
+        "title": "Un cont pentru toată familia",
+        "body": "Un părinte își face un singur cont și adaugă până la 4 copii."
+      },
+      {
+        "title": "Alege un animăluț",
+        "body": "Fiecare copil alege un animăluț gratuit: Bear, Husky sau Kitty."
+      },
+      {
+        "title": "Joacă, câștigă, îmbracă",
+        "body": "Joacă runde de 10 întrebări, câștigă stele și își îmbracă animăluțul."
+      }
+    ],
+    "kids": [
+      "Maya",
+      "Leo",
+      "Sam"
+    ],
+    "addKid": "Adaugă copil",
+    "free": "Gratuit",
+    "alt3": "Husky cu pălăria de vrăjitor"
+  },
+  "games": {
+    "eyebrow": "Cele șapte jocuri",
+    "title": "Șapte moduri de a exersa.",
+    "list": [
+      {
+        "name": "Numărare",
+        "sub": "Numără ce vezi"
+      },
+      {
+        "name": "Adunare",
+        "sub": "Pune-le laolaltă"
+      },
+      {
+        "name": "Scădere",
+        "sub": "Ia câteva deoparte"
+      },
+      {
+        "name": "Înmulțire",
+        "sub": "Tabla înmulțirii până la 12"
+      },
+      {
+        "name": "Împărțire",
+        "sub": "Împarte în mod egal"
+      },
+      {
+        "name": "Fracții",
+        "sub": "Doimi, treimi, sferturi"
+      },
+      {
+        "name": "Exercițiu mixt",
+        "sub": "Câte puțin din toate"
+      }
+    ],
+    "locked": "Se deblochează mai târziu",
+    "note": "Dificultatea crește singură pe măsură ce copilul progresează. La Adunare trece de la numere până la 10, la 20, la 100, apoi la adunarea cu trecere peste ordin. Împărțirea și Fracțiile se deblochează mai târziu."
+  },
+  "kids": {
+    "eyebrow": "Pentru copii",
+    "title": "Fiecare răspuns corect aduce stele.",
+    "caption": "Stelele cumpără pălării. Pălăriile sunt foarte importante.",
+    "sub": "Trei răspunsuri corecte la rând pornesc un combo. Cu stele se cumpără animăluțe, pălării, haine, pelerine, obiecte și decoruri, iar animăluțul poartă tot ce cumpără copilul.",
+    "pets": [
+      "Bear",
+      "Husky",
+      "Kitty",
+      "Foxy",
+      "Bunny"
+    ],
+    "free": "Gratuit",
+    "shop": "În magazin",
+    "items": [
+      "Diademă",
+      "Pălărie de vrăjitor",
+      "Cască SpecOps"
+    ],
+    "dressed": [
+      "Kitty cu diadema",
+      "Husky în echipament SpecOps"
+    ],
+    "badgesTitle": "Insigne de colecționat",
+    "badges": [
+      "Primul răspuns corect",
+      "7 zile la rând",
+      "10 la rând",
+      "Adunare · Stăpânită"
+    ],
+    "daily": "În fiecare zi: o misiune zilnică și o provocare zilnică."
+  },
+  "parents": {
+    "eyebrow": "Pentru părinți",
+    "title": "Vezi ce a exersat în săptămâna asta.",
+    "bullets": [
+      "Vezi ce a exersat în săptămâna asta.",
+      "Observi subiectul la care are nevoie de ajutor.",
+      "Setezi o limită zilnică de timp."
+    ],
+    "note": "Un singur cont, până la 4 copii.",
+    "cta": "Creează cont de părinte",
+    "dash": {
+      "heading": "Săptămâna Mayei",
+      "age": "7 ani",
+      "kids": [
+        "Maya",
+        "Leo"
+      ],
+      "stats": [
+        {
+          "label": "Timp săptămâna asta",
+          "value": "1 h 24 min"
+        },
+        {
+          "label": "Acuratețe",
+          "value": "86%"
+        },
+        {
+          "label": "Zile la rând",
+          "value": "5 zile"
+        },
+        {
+          "label": "Stele câștigate",
+          "value": "312"
+        }
+      ],
+      "mastery": "Harta progresului",
+      "play": "Timp de joacă",
+      "min": "min",
+      "days": [
+        "L",
+        "Ma",
+        "Mi",
+        "J",
+        "V",
+        "S",
+        "D"
+      ],
+      "status": {
+        "ma": "Stăpânit",
+        "mi": "În progres",
+        "hi": "Are nevoie de ajutor",
+        "none": "Neînceput"
+      },
+      "limit": "Limită zilnică:",
+      "limitVal": "20 min/zi",
+      "change": "Schimbă"
+    }
+  },
+  "teachers": {
+    "eyebrow": "Pentru profesori",
+    "title": "Toată clasa pe un singur ecran.",
+    "bullets": [
+      "Creezi o clasă dintr-un singur clic.",
+      "Trimiți un cod sau un link. Nu ai nevoie de e-mailurile elevilor.",
+      "Setezi intervalele de numere pentru toată clasa.",
+      "Vezi cine are nevoie de ajutor înainte să-ți spună lucrarea."
+    ],
+    "cta": "Creează cont de profesor",
+    "roster": {
+      "className": "Clasa a II-a — Sala 12",
+      "codeLabel": "Cod de acces",
+      "copy": "Copiază",
+      "copied": "Copiat",
+      "link": "Copiază linkul de invitație",
+      "cols": [
+        "Elev",
+        "Timp",
+        "Acuratețe",
+        "Zile la rând"
+      ],
+      "flags": {
+        "help": "ARE NEVOIE DE AJUTOR",
+        "top": "PRIMUL DIN CLASĂ",
+        "away": "NECONECTAT"
+      },
+      "heat": "Progres pe subiecte",
+      "topics": [
+        "Num.",
+        "Adun.",
+        "Scăd.",
+        "Înm.",
+        "Împ."
+      ],
+      "legend": [
+        "Neînceput",
+        "Are nevoie de ajutor",
+        "În progres",
+        "Stăpânit"
+      ],
+      "settingsTitle": "Dificultatea clasei",
+      "settings": [
+        "Adunare până la 20",
+        "Cu trecere peste ordin",
+        "Tabla înmulțirii până la 5"
+      ],
+      "days": "z"
+    }
+  },
+  "trust": {
+    "items": [
+      "Merge în orice browser, fără instalare",
+      "Gândit pentru copii de 5–10 ani",
+      "Timp de joacă controlat de părinte",
+      "În engleză și română",
+      "Fără reclame"
+    ]
+  },
+  "final": {
+    "title": "Gata de joacă?",
+    "sub": "E gratuit și merge chiar în browserul pe care îl folosești acum.",
+    "bubble": "Hai să adunăm stele! ⭐",
+    "cta": "Creează cont de părinte",
+    "loginPrompt": "Ai deja cont?",
+    "login": "Conectează-te",
+    "alt": "Bear care face cu lăbuța"
+  },
+  "footer": {
+    "tagline": "Aventuri matematice cu animăluțele preferate.",
+    "privacy": "Confidențialitate",
+    "terms": "Termeni",
+    "contact": "Contact",
+    "copyright": "© 2026 NumiPaws"
+  },
+  "privacy": {
+    "title": "Confidențialitate",
+    "draft": "Ciornă, textul urmează.",
+    "sections": [
+      "Ce date colectăm",
+      "Copii",
+      "Videoclipul YouTube",
+      "Contact"
+    ],
+    "back": "Înapoi la pagina principală"
+  },
+  "terms": {
+    "title": "Termeni",
+    "draft": "Ciornă, textul urmează.",
+    "sections": [
+      "Serviciul",
+      "Conturi",
+      "Utilizare acceptabilă",
+      "Contact"
+    ],
+    "back": "Înapoi la pagina principală"
+  },
+  "notFound": {
+    "title": "Pagina nu a fost găsită",
+    "text": "Pagina pe care o cauți nu există.",
+    "home": "Mergi la pagina principală"
+  }
+}

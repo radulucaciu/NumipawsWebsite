@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{{ site.cspMeta }}">
+<title>{{ terms.title }} · NumiPaws</title>
+<meta name="description" content="{{ meta.description }}">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ site.canonical }}">
+<link rel="alternate" hreflang="en" href="{{ site.enHref }}">
+<link rel="alternate" hreflang="ro" href="{{ site.roHref }}">
+<link rel="alternate" hreflang="x-default" href="{{ site.enHref }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NumiPaws">
+<meta property="og:title" content="{{ terms.title }} · NumiPaws">
+<meta property="og:description" content="{{ meta.description }}">
+<meta property="og:url" content="{{ site.canonical }}">
+<meta property="og:locale" content="{{ site.ogLocale }}">
+<meta property="og:image" content="{{ site.ogImage }}">
+<meta name="theme-color" content="#FFF2D1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<div class="page">
+<a class="skip" href="#main">{{ nav.skip }}</a>
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="{{ site.homeHref }}" aria-label="{{ nav.home }}"><svg class="star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.85 5.9 6.5.85-4.75 4.5 1.2 6.45L12 17.2l-5.8 3.1 1.2-6.45-4.75-4.5 6.5-.85z" fill="#F6C84E" stroke="#D9A325" stroke-width="1.8" stroke-linejoin="round"/></svg>NumiPaws</a>
+    <div class="ls nav-ls" data-ls>
+      <button type="button" class="ls-btn" aria-haspopup="menu" aria-expanded="false" aria-label="{{ lang.label }}: {{ site.langName }}">
+        <img src="/assets/flag-{{ site.flag }}.svg" alt="" width="24" height="16">
+        <span class="ls-code">{{ site.langCode }}</span><span class="ls-name">{{ site.langName }}</span>
+        <span class="ls-caret" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="ls-menu" role="menu" aria-label="{{ lang.label }}">
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.enChecked }}" lang="en" hreflang="en" href="{{ site.enPath }}" data-lang="en"><img src="/assets/flag-gb.svg" alt="" width="24" height="16"><span>{{ lang.en }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.roChecked }}" lang="ro" hreflang="ro" href="{{ site.roPath }}" data-lang="ro"><img src="/assets/flag-ro.svg" alt="" width="24" height="16"><span>{{ lang.ro }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+      </div>
+    </div>
+    <div class="nav-cta">
+      <a class="pill pill-white pill-sm" href="{{ links.login }}" rel="noopener">{{ nav.login }}</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <h1>{{ terms.title }}</h1>
+  <p class="notice">{{ terms.draft }}</p>
+  <section class="doc-section"><h2>{{ terms.sections.0 }}</h2><p>{{ terms.draft }}</p></section>
+  <section class="doc-section"><h2>{{ terms.sections.1 }}</h2><p>{{ terms.draft }}</p></section>
+  <section class="doc-section"><h2>{{ terms.sections.2 }}</h2><p>{{ terms.draft }}</p></section>
+  <section class="doc-section"><h2>{{ terms.sections.3 }}</h2><p><a href="mailto:hello@numipaws.com">hello@numipaws.com</a></p></section>
+  <p><a href="{{ site.homeHref }}">&larr; {{ terms.back }}</a></p>
+</main>
+
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-brand">
+      <span class="footer-logo"><svg class="star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.85 5.9 6.5.85-4.75 4.5 1.2 6.45L12 17.2l-5.8 3.1 1.2-6.45-4.75-4.5 6.5-.85z" fill="#F6C84E" stroke="#D9A325" stroke-width="1.8" stroke-linejoin="round"/></svg>NumiPaws</span>
+      <span class="footer-tag">{{ footer.tagline }}</span>
+    </div>
+    <nav class="footer-nav">
+      <a href="{{ site.privacyHref }}">{{ footer.privacy }}</a>
+      <a href="{{ site.termsHref }}">{{ footer.terms }}</a>
+      <a href="mailto:hello@numipaws.com">{{ footer.contact }}</a>
+    </nav>
+    <div class="ls ls-full ls-up ls-left" data-ls>
+      <button type="button" class="ls-btn" aria-haspopup="menu" aria-expanded="false" aria-label="{{ lang.label }}: {{ site.langName }}">
+        <img src="/assets/flag-{{ site.flag }}.svg" alt="" width="24" height="16" loading="lazy">
+        <span class="ls-code">{{ site.langCode }}</span><span class="ls-name">{{ site.langName }}</span>
+        <span class="ls-caret" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="ls-menu" role="menu" aria-label="{{ lang.label }}">
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.enChecked }}" lang="en" hreflang="en" href="{{ site.enPath }}" data-lang="en"><img src="/assets/flag-gb.svg" alt="" width="24" height="16" loading="lazy"><span>{{ lang.en }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.roChecked }}" lang="ro" hreflang="ro" href="{{ site.roPath }}" data-lang="ro"><img src="/assets/flag-ro.svg" alt="" width="24" height="16" loading="lazy"><span>{{ lang.ro }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+      </div>
+    </div>
+    <span class="copyright">{{ footer.copyright }}</span>
+  </div>
+</footer>
+</div>
+</body>
+</html>

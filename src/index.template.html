@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{{ site.cspMeta }}">
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.description }}">
+<link rel="canonical" href="{{ site.canonical }}">
+<link rel="alternate" hreflang="en" href="{{ site.enHref }}">
+<link rel="alternate" hreflang="ro" href="{{ site.roHref }}">
+<link rel="alternate" hreflang="x-default" href="{{ site.enHref }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NumiPaws">
+<meta property="og:title" content="{{ meta.title }}">
+<meta property="og:description" content="{{ meta.description }}">
+<meta property="og:url" content="{{ site.canonical }}">
+<meta property="og:locale" content="{{ site.ogLocale }}">
+<meta property="og:image" content="{{ site.ogImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFF2D1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<div class="page">
+<a class="skip" href="#main">{{ nav.skip }}</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="{{ nav.home }}"><svg class="star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.85 5.9 6.5.85-4.75 4.5 1.2 6.45L12 17.2l-5.8 3.1 1.2-6.45-4.75-4.5 6.5-.85z" fill="#F6C84E" stroke="#D9A325" stroke-width="1.8" stroke-linejoin="round"/></svg>NumiPaws</a>
+    <nav class="nav-links">
+      <a href="#parents">{{ nav.parents }}</a>
+      <a href="#kids">{{ nav.kids }}</a>
+      <a href="#teachers">{{ nav.teachers }}</a>
+      <a href="#how">{{ nav.how }}</a>
+    </nav>
+    <div class="ls nav-ls" data-ls>
+      <button type="button" class="ls-btn" aria-haspopup="menu" aria-expanded="false" aria-label="{{ lang.label }}: {{ site.langName }}">
+        <img src="/assets/flag-{{ site.flag }}.svg" alt="" width="24" height="16">
+        <span class="ls-code">{{ site.langCode }}</span><span class="ls-name">{{ site.langName }}</span>
+        <span class="ls-caret" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="ls-menu" role="menu" aria-label="{{ lang.label }}">
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.enChecked }}" lang="en" hreflang="en" href="{{ site.enPath }}" data-lang="en"><img src="/assets/flag-gb.svg" alt="" width="24" height="16"><span>{{ lang.en }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.roChecked }}" lang="ro" hreflang="ro" href="{{ site.roPath }}" data-lang="ro"><img src="/assets/flag-ro.svg" alt="" width="24" height="16"><span>{{ lang.ro }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+      </div>
+    </div>
+    <button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="{{ nav.menu }}" data-menu-btn data-label-open="{{ nav.menu }}" data-label-close="{{ nav.close }}">&#9776;</button>
+    <div class="nav-cta">
+      <a class="pill pill-white pill-sm" href="{{ links.login }}" rel="noopener">{{ nav.login }}</a>
+      <a class="pill pill-blue pill-sm" href="{{ links.parent }}" rel="noopener">{{ nav.signup }}</a>
+    </div>
+    <nav class="menu" id="menu" data-menu aria-label="{{ nav.menu }}">
+      <a href="#parents">{{ nav.parents }}<span aria-hidden="true">&rarr;</span></a>
+      <a href="#kids">{{ nav.kids }}<span aria-hidden="true">&rarr;</span></a>
+      <a href="#teachers">{{ nav.teachers }}<span aria-hidden="true">&rarr;</span></a>
+      <a href="#how">{{ nav.how }}<span aria-hidden="true">&rarr;</span></a>
+      <div class="menu-lang">
+        <span>{{ lang.label }}</span>
+        <div class="ls ls-full" data-ls>
+          <button type="button" class="ls-btn" aria-haspopup="menu" aria-expanded="false" aria-label="{{ lang.label }}: {{ site.langName }}">
+            <img src="/assets/flag-{{ site.flag }}.svg" alt="" width="24" height="16">
+            <span class="ls-code">{{ site.langCode }}</span><span class="ls-name">{{ site.langName }}</span>
+            <span class="ls-caret" aria-hidden="true">&#9660;</span>
+          </button>
+          <div class="ls-menu" role="menu" aria-label="{{ lang.label }}">
+            <a class="ls-row" role="menuitemradio" aria-checked="{{ site.enChecked }}" lang="en" hreflang="en" href="{{ site.enPath }}" data-lang="en"><img src="/assets/flag-gb.svg" alt="" width="24" height="16"><span>{{ lang.en }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+            <a class="ls-row" role="menuitemradio" aria-checked="{{ site.roChecked }}" lang="ro" hreflang="ro" href="{{ site.roPath }}" data-lang="ro"><img src="/assets/flag-ro.svg" alt="" width="24" height="16"><span>{{ lang.ro }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <h1>{{ site.headline }}</h1>
+    <p class="hero-sub">{{ hero.sub }}</p>
+    <div class="hero-ctas">
+      <a class="pill pill-blue pill-lg" href="{{ links.parent }}" rel="noopener"><span aria-hidden="true">&#128100;</span>{{ hero.ctaParent }}</a>
+      <a class="pill pill-white pill-lg" href="{{ links.teacher }}" rel="noopener"><span aria-hidden="true">&#127891;</span>{{ hero.ctaTeacher }}</a>
+    </div>
+    <ul class="chips">
+      <li>{{ hero.chips.0 }}</li>
+      <li>{{ hero.chips.1 }}</li>
+      <li>{{ hero.chips.2 }}</li>
+    </ul>
+  </div>
+  <div class="hero-art">
+    <div class="hero-stage">
+      <div class="blob hb1"></div>
+      <div class="blob hb2"></div>
+      <div class="blob hb3"></div>
+      <span class="spark sp1"></span><span class="spark sp2"></span><span class="spark sp3"></span><span class="spark sp4"></span><span class="spark sp5"></span><span class="spark sp6"></span><span class="spark sp7"></span>
+      <picture class="peek peek-bear"><source type="image/webp" srcset="/assets/bear.webp"><img src="/assets/bear.png" alt="{{ hero.altBear }}" width="480" height="480"></picture>
+      <picture class="peek peek-kitty"><source type="image/webp" srcset="/assets/kitty.webp"><img src="/assets/kitty.png" alt="{{ hero.altKitty }}" width="480" height="480"></picture>
+      <div class="ground"></div>
+      <div class="hero-husky bob"><picture><source type="image/webp" srcset="/assets/husky.webp"><img src="/assets/husky.png" alt="{{ hero.altHusky }}" width="480" height="480" fetchpriority="high"></picture></div>
+      <div class="bubble hero-bubble">{{ hero.bubble }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-video">
+  <div class="sec-head">
+    <span class="eyebrow"><span class="dot dot-amber"></span>{{ video.eyebrow }}</span>
+    <h2>{{ video.title }}</h2>
+    <p class="lead">{{ video.sub }}</p>
+  </div>
+  <div class="vf" data-video{{#if site.youtubeId}} data-youtube-id="{{ site.youtubeId }}"{{/if}}>
+    <div class="vf-card">
+      <div class="vf-screen">
+        <div class="poster" role="img" aria-label="{{ video.alt }}" data-poster>
+          <div class="poster-in" aria-hidden="true">
+          <div class="blob pb1"></div>
+          <div class="blob pb2"></div>
+          <div class="blob pb3"></div>
+          <div class="p-top">
+            <div class="p-kid"><img src="/assets/bear.webp" alt="" width="480" height="480" loading="lazy"><b>{{ video.kid }}</b><span class="p-lvl">{{ video.lvl }}</span></div>
+            <div class="p-right">
+              <span class="p-stars">&#11088; 638</span>
+              <span class="p-flag"><img src="/assets/flag-{{ site.flag }}.svg" alt="" width="24" height="16" loading="lazy">{{ site.langCode }}</span>
+            </div>
+          </div>
+          <div class="p-card">
+            <div class="p-quest">{{ video.quest }}</div>
+            <div class="p-bubble">{{ video.bubble }}</div>
+            <picture><source type="image/webp" srcset="/assets/husky-wizard.webp"><img class="p-husky" src="/assets/husky-wizard.png" alt="" width="425" height="480" loading="lazy"></picture>
+            <div class="p-xp"><span>{{ video.next }}</span><span class="p-bar"><i></i></span><span>{{ video.xp }}</span></div>
+          </div>
+          <div class="p-btns">
+            <div class="p-btn p-play">&#127918; {{ video.btnPlay }}</div>
+            <div class="p-btn p-shop">&#128717;&#65039; {{ video.btnShop }}</div>
+          </div>
+          </div>
+        </div>
+        <button type="button" class="play" data-play data-title="{{ video.title }}"{{#unless site.youtubeId}} disabled aria-disabled="true"{{/unless}}>
+          <span class="play-disc"><span class="play-tri"></span></span>
+          <span class="play-cap">{{ video.caption }}</span>
+        </button>
+      </div>
+    </div>
+    {{#if site.youtubeId}}<p class="vf-note">{{ video.note }}</p>{{/if}}
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="sec-head">
+    <span class="eyebrow"><span class="dot dot-blue"></span>{{ how.eyebrow }}</span>
+    <h2>{{ how.title }}</h2>
+  </div>
+  <div class="how-grid">
+    <article class="card">
+      <div class="how-ill ill-kids">
+        <div class="kid-chip"><img class="av-blue" src="/assets/bear.webp" alt="" width="480" height="480" loading="lazy"><b>{{ how.kids.0 }}</b></div>
+        <div class="kid-chip"><img class="av-purple" src="/assets/husky.webp" alt="" width="480" height="480" loading="lazy"><b>{{ how.kids.1 }}</b></div>
+        <div class="kid-chip"><img class="av-pink" src="/assets/kitty.webp" alt="" width="480" height="480" loading="lazy"><b>{{ how.kids.2 }}</b></div>
+        <div class="kid-add"><i>+</i><span>{{ how.addKid }}</span></div>
+      </div>
+      <div class="step"><span class="step-n step-1" aria-hidden="true">1</span><h3>{{ how.steps.0.title }}</h3></div>
+      <p>{{ how.steps.0.body }}</p>
+    </article>
+    <article class="card">
+      <div class="how-ill ill-pets">
+        <div class="starter"><picture><source type="image/webp" srcset="/assets/bear.webp"><img src="/assets/bear.png" alt="{{ kids.pets.0 }}" width="480" height="480" loading="lazy"></picture><span class="tag-free">{{ how.free }}</span></div>
+        <div class="starter"><picture><source type="image/webp" srcset="/assets/husky.webp"><img src="/assets/husky.png" alt="{{ kids.pets.1 }}" width="480" height="480" loading="lazy"></picture><span class="tag-free">{{ how.free }}</span></div>
+        <div class="starter"><picture><source type="image/webp" srcset="/assets/kitty.webp"><img src="/assets/kitty.png" alt="{{ kids.pets.2 }}" width="480" height="480" loading="lazy"></picture><span class="tag-free">{{ how.free }}</span></div>
+      </div>
+      <div class="step"><span class="step-n step-2" aria-hidden="true">2</span><h3>{{ how.steps.1.title }}</h3></div>
+      <p>{{ how.steps.1.body }}</p>
+    </article>
+    <article class="card">
+      <div class="how-ill ill-stars">
+        <picture><source type="image/webp" srcset="/assets/husky-wizard.webp"><img src="/assets/husky-wizard.png" alt="{{ how.alt3 }}" width="425" height="480" loading="lazy"></picture>
+        <div class="stack">
+          <span class="star-pill"><svg class="star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.85 5.9 6.5.85-4.75 4.5 1.2 6.45L12 17.2l-5.8 3.1 1.2-6.45-4.75-4.5 6.5-.85z" fill="#F6C84E" stroke="#D9A325" stroke-width="1.8" stroke-linejoin="round"/></svg><span data-stars>24</span></span>
+          <span class="plus-one">+1 &#11088;</span>
+        </div>
+      </div>
+      <div class="step"><span class="step-n step-3" aria-hidden="true">3</span><h3>{{ how.steps.2.title }}</h3></div>
+      <p>{{ how.steps.2.body }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="sec sec-games">
+  <div class="sec-head">
+    <span class="eyebrow"><span class="dot dot-mint"></span>{{ games.eyebrow }}</span>
+    <h2>{{ games.title }}</h2>
+  </div>
+  <div class="games-row">
+    <div class="tile t1"><span class="tile-emoji" aria-hidden="true">&#129518;</span><span class="tile-name">{{ games.list.0.name }}</span><span class="tile-sub">{{ games.list.0.sub }}</span></div>
+    <div class="tile t2"><span class="tile-emoji" aria-hidden="true">&#10133;</span><span class="tile-name">{{ games.list.1.name }}</span><span class="tile-sub">{{ games.list.1.sub }}</span></div>
+    <div class="tile t3"><span class="tile-emoji" aria-hidden="true">&#10134;</span><span class="tile-name">{{ games.list.2.name }}</span><span class="tile-sub">{{ games.list.2.sub }}</span></div>
+    <div class="tile t4"><span class="tile-emoji" aria-hidden="true">&#10006;&#65039;</span><span class="tile-name">{{ games.list.3.name }}</span><span class="tile-sub">{{ games.list.3.sub }}</span></div>
+    <div class="tile t5"><span class="tile-emoji" aria-hidden="true">&#10135;</span><span class="tile-name">{{ games.list.4.name }}</span><span class="tile-sub">{{ games.list.4.sub }}</span><span class="tile-lock">&#128274; {{ games.locked }}</span></div>
+    <div class="tile t6"><span class="tile-emoji" aria-hidden="true">&frac14;</span><span class="tile-name">{{ games.list.5.name }}</span><span class="tile-sub">{{ games.list.5.sub }}</span><span class="tile-lock">&#128274; {{ games.locked }}</span></div>
+    <div class="tile t7"><span class="tile-emoji" aria-hidden="true">&#127922;</span><span class="tile-name">{{ games.list.6.name }}</span><span class="tile-sub">{{ games.list.6.sub }}</span></div>
+  </div>
+  <p class="games-note">{{ games.note }}</p>
+</section>
+
+<section class="sec" id="kids">
+  <div class="kids-card">
+    <div class="sec-head kids-head">
+      <span class="eyebrow"><span class="dot dot-pink"></span>{{ kids.eyebrow }}</span>
+      <h2>{{ kids.title }}</h2>
+      <p class="kids-caption">{{ kids.caption }}</p>
+      <p class="kids-sub">{{ kids.sub }}</p>
+    </div>
+    <div class="stickers">
+      <figure class="sticker st-pet rot-m4"><picture><source type="image/webp" srcset="/assets/bear.webp"><img src="/assets/bear.png" alt="{{ kids.pets.0 }}" width="480" height="480" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.pets.0 }}</span><span class="st-tag tag-mint">{{ kids.free }}</span></figcaption></figure>
+      <figure class="sticker st-pet rot-3"><picture><source type="image/webp" srcset="/assets/husky.webp"><img src="/assets/husky.png" alt="{{ kids.pets.1 }}" width="480" height="480" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.pets.1 }}</span><span class="st-tag tag-mint">{{ kids.free }}</span></figcaption></figure>
+      <figure class="sticker st-pet rot-m2"><picture><source type="image/webp" srcset="/assets/kitty.webp"><img src="/assets/kitty.png" alt="{{ kids.pets.2 }}" width="480" height="480" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.pets.2 }}</span><span class="st-tag tag-mint">{{ kids.free }}</span></figcaption></figure>
+      <figure class="sticker st-pet rot-5"><picture><source type="image/webp" srcset="/assets/foxy.webp"><img src="/assets/foxy.png" alt="{{ kids.pets.3 }}" width="480" height="480" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.pets.3 }}</span><span class="st-tag tag-white">&#11088; {{ kids.shop }}</span></figcaption></figure>
+      <figure class="sticker st-pet rot-m3"><picture><source type="image/webp" srcset="/assets/bunny.webp"><img src="/assets/bunny.png" alt="{{ kids.pets.4 }}" width="480" height="480" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.pets.4 }}</span><span class="st-tag tag-white">&#11088; {{ kids.shop }}</span></figcaption></figure>
+      <figure class="sticker st-item rot-6 ar-738-678"><picture><source type="image/webp" srcset="/assets/item-tiara.webp"><img src="/assets/item-tiara.png" alt="{{ kids.items.0 }}" width="480" height="441" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.items.0 }}</span><span class="st-tag tag-white">&#11088; {{ kids.shop }}</span></figcaption></figure>
+      <figure class="sticker st-item rot-m5 ar-574-480"><picture><source type="image/webp" srcset="/assets/item-wizard-hat.webp"><img src="/assets/item-wizard-hat.png" alt="{{ kids.items.1 }}" width="480" height="401" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.items.1 }}</span><span class="st-tag tag-white">&#11088; {{ kids.shop }}</span></figcaption></figure>
+      <figure class="sticker st-item rot-4 ar-738-678"><picture><source type="image/webp" srcset="/assets/item-helmet.webp"><img src="/assets/item-helmet.png" alt="{{ kids.items.2 }}" width="480" height="441" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.items.2 }}</span><span class="st-tag tag-white">&#11088; {{ kids.shop }}</span></figcaption></figure>
+      <figure class="sticker st-big rot-m3 ar-1056-1210"><picture><source type="image/webp" srcset="/assets/kitty-tiara.webp"><img src="/assets/kitty-tiara.png" alt="{{ kids.dressed.0 }}" width="419" height="480" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.dressed.0 }}</span><span class="st-tag tag-pink">&#10024;</span></figcaption></figure>
+      <figure class="sticker st-big rot-3 ar-1056-1080"><picture><source type="image/webp" srcset="/assets/husky-tactical.webp"><img src="/assets/husky-tactical.png" alt="{{ kids.dressed.1 }}" width="469" height="480" loading="lazy"></picture><figcaption><span class="st-name">{{ kids.dressed.1 }}</span><span class="st-tag tag-pink">&#10024;</span></figcaption></figure>
+    </div>
+    <div class="badges-wrap">
+      <span class="badges-title">{{ kids.badgesTitle }}</span>
+      <div class="badges">
+        <span class="badge"><i aria-hidden="true">&#11088;</i>{{ kids.badges.0 }}</span>
+        <span class="badge"><i aria-hidden="true">&#128293;</i>{{ kids.badges.1 }}</span>
+        <span class="badge"><i aria-hidden="true">&#9889;</i>{{ kids.badges.2 }}</span>
+        <span class="badge"><i aria-hidden="true">&#127942;&#65039;</i>{{ kids.badges.3 }}</span>
+      </div>
+      <p class="kids-daily">{{ kids.daily }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec split" id="parents">
+  <div class="split-text">
+    <span class="eyebrow"><span class="dot dot-purple"></span>{{ parents.eyebrow }}</span>
+    <h2>{{ parents.title }}</h2>
+    <ul class="checks checks-purple">
+      <li><i aria-hidden="true">&#10003;</i>{{ parents.bullets.0 }}</li>
+      <li><i aria-hidden="true">&#10003;</i>{{ parents.bullets.1 }}</li>
+      <li><i aria-hidden="true">&#10003;</i>{{ parents.bullets.2 }}</li>
+    </ul>
+    <p class="note">{{ parents.note }}</p>
+    <a class="pill pill-purple" href="{{ links.parent }}" rel="noopener"><span aria-hidden="true">&#128100;</span>{{ parents.cta }}</a>
+  </div>
+  <div class="mock" aria-label="{{ parents.dash.heading }}">
+    <div class="dash-head">
+      <img src="/assets/kitty.webp" alt="" width="480" height="480" loading="lazy">
+      <div class="dash-title"><b>{{ parents.dash.heading }}</b><span>{{ parents.dash.age }}</span></div>
+      <div class="tabs"><span class="tab on">{{ parents.dash.kids.0 }}</span><span class="tab">{{ parents.dash.kids.1 }}</span></div>
+    </div>
+    <div class="stats">
+      <div class="stat stat-1"><i aria-hidden="true">&#9201;&#65039;</i><b>{{ parents.dash.stats.0.value }}</b><span>{{ parents.dash.stats.0.label }}</span></div>
+      <div class="stat stat-2"><i aria-hidden="true">&#127919;</i><b>{{ parents.dash.stats.1.value }}</b><span>{{ parents.dash.stats.1.label }}</span></div>
+      <div class="stat stat-3"><i aria-hidden="true">&#128293;</i><b>{{ parents.dash.stats.2.value }}</b><span>{{ parents.dash.stats.2.label }}</span></div>
+      <div class="stat stat-4"><i aria-hidden="true">&#11088;</i><b>{{ parents.dash.stats.3.value }}</b><span>{{ parents.dash.stats.3.label }}</span></div>
+    </div>
+    <div class="panels">
+      <div class="panel">
+        <span class="panel-title">{{ parents.dash.mastery }}</span>
+        <div class="mrow"><div class="mrow-h"><span aria-hidden="true">&#129518;</span><b>{{ games.list.0.name }}</b><span class="st-ma">{{ parents.dash.status.ma }}</span></div><div class="track"><i class="w-100 bg-t1"></i></div></div>
+        <div class="mrow"><div class="mrow-h"><span aria-hidden="true">&#10133;</span><b>{{ games.list.1.name }}</b><span class="st-mi">{{ parents.dash.status.mi }}</span></div><div class="track"><i class="w-82 bg-t2"></i></div></div>
+        <div class="mrow"><div class="mrow-h"><span aria-hidden="true">&#10134;</span><b>{{ games.list.2.name }}</b><span class="st-hi">{{ parents.dash.status.hi }}</span></div><div class="track"><i class="w-40 bg-t3"></i></div></div>
+        <div class="mrow"><div class="mrow-h"><span aria-hidden="true">&#10006;&#65039;</span><b>{{ games.list.3.name }}</b><span class="st-mi">{{ parents.dash.status.mi }}</span></div><div class="track"><i class="w-18 bg-t4"></i></div></div>
+        <div class="mrow"><div class="mrow-h"><span aria-hidden="true">&#10135;</span><b>{{ games.list.4.name }}</b><span class="st-none">{{ parents.dash.status.none }}</span></div><div class="track"><i class="w-0 bg-t5"></i></div></div>
+      </div>
+      <div class="panel">
+        <span class="panel-title">{{ parents.dash.play }}</span>
+        <div class="chart">
+          <div class="limit"><span>{{ parents.dash.limitVal }}</span></div>
+          <div class="bar"><b>12</b><i class="h-50"></i><span>{{ parents.dash.days.0 }}</span></div>
+          <div class="bar"><b>18</b><i class="h-75"></i><span>{{ parents.dash.days.1 }}</span></div>
+          <div class="bar"><b></b><i class="h-0"></i><span>{{ parents.dash.days.2 }}</span></div>
+          <div class="bar"><b>20</b><i class="h-83"></i><span>{{ parents.dash.days.3 }}</span></div>
+          <div class="bar hi"><b>15</b><i class="h-63"></i><span>{{ parents.dash.days.4 }}</span></div>
+          <div class="bar"><b>9</b><i class="h-38"></i><span>{{ parents.dash.days.5 }}</span></div>
+          <div class="bar"><b>10</b><i class="h-42"></i><span>{{ parents.dash.days.6 }}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="limit-row"><i aria-hidden="true">&#9201;&#65039;</i><span>{{ parents.dash.limit }} <strong>{{ parents.dash.limitVal }}</strong></span><span class="btn-mock">{{ parents.dash.change }}</span></div>
+  </div>
+</section>
+
+<section class="sec split split-rev" id="teachers">
+  <div class="split-text">
+    <span class="eyebrow"><span class="dot dot-peach"></span>{{ teachers.eyebrow }}</span>
+    <h2>{{ teachers.title }}</h2>
+    <ul class="checks checks-peach">
+      <li><i aria-hidden="true">&#10003;</i>{{ teachers.bullets.0 }}</li>
+      <li><i aria-hidden="true">&#10003;</i>{{ teachers.bullets.1 }}</li>
+      <li><i aria-hidden="true">&#10003;</i>{{ teachers.bullets.2 }}</li>
+      <li><i aria-hidden="true">&#10003;</i>{{ teachers.bullets.3 }}</li>
+    </ul>
+    <a class="pill pill-white" href="{{ links.teacher }}" rel="noopener"><span aria-hidden="true">&#127891;</span>{{ teachers.cta }}</a>
+  </div>
+  <div class="mock" aria-label="{{ teachers.roster.className }}">
+    <div class="roster-head">
+      <span class="roster-name">&#127891; {{ teachers.roster.className }}</span>
+      <div class="code"><span>{{ teachers.roster.codeLabel }}</span><b>ABCD23</b><button type="button" class="copy" data-copy data-copied="{{ teachers.roster.copied }}">{{ teachers.roster.copy }}</button></div>
+    </div>
+    <div class="table" role="table">
+      <div class="tr th" role="row"><span role="columnheader">{{ teachers.roster.cols.0 }}</span><span role="columnheader">{{ teachers.roster.cols.1 }}</span><span role="columnheader">{{ teachers.roster.cols.2 }}</span><span role="columnheader">{{ teachers.roster.cols.3 }}</span></div>
+      <div class="tr" role="row"><div class="stu" role="cell"><span class="ini av-blue">AP</span><div class="stu-n"><b>Ana P.</b><span class="flag flag-top">{{ teachers.roster.flags.top }}</span></div></div><span role="cell">52m</span><span role="cell">94%</span><span role="cell">&#128293; 8{{ teachers.roster.days }}</span></div>
+      <div class="tr" role="row"><div class="stu" role="cell"><span class="ini av-purple">BT</span><div class="stu-n"><b>Ben T.</b></div></div><span role="cell">38m</span><span role="cell">81%</span><span role="cell">&#128293; 4{{ teachers.roster.days }}</span></div>
+      <div class="tr" role="row"><div class="stu" role="cell"><span class="ini av-pink">CR</span><div class="stu-n"><b>Chloe R.</b><span class="flag flag-help">{{ teachers.roster.flags.help }}</span></div></div><span role="cell">25m</span><span role="cell">58%</span><span role="cell">&#128293; 2{{ teachers.roster.days }}</span></div>
+      <div class="tr" role="row"><div class="stu" role="cell"><span class="ini av-mint">DM</span><div class="stu-n"><b>David M.</b><span class="flag flag-away">{{ teachers.roster.flags.away }}</span></div></div><span role="cell">0m</span><span role="cell">&mdash;</span><span role="cell">&#128293; 0{{ teachers.roster.days }}</span></div>
+      <div class="tr" role="row"><div class="stu" role="cell"><span class="ini av-peach">ES</span><div class="stu-n"><b>Eva S.</b></div></div><span role="cell">44m</span><span role="cell">88%</span><span role="cell">&#128293; 6{{ teachers.roster.days }}</span></div>
+    </div>
+    <div class="heat-wrap">
+      <span class="panel-title">{{ teachers.roster.heat }}</span>
+      <div class="heat">
+        <span></span>
+        <span class="heat-h">{{ teachers.roster.topics.0 }}</span><span class="heat-h">{{ teachers.roster.topics.1 }}</span><span class="heat-h">{{ teachers.roster.topics.2 }}</span><span class="heat-h">{{ teachers.roster.topics.3 }}</span><span class="heat-h">{{ teachers.roster.topics.4 }}</span>
+        <span class="cell cell-n">Ana P.</span><span class="cell c-ma">Ma</span><span class="cell c-ma">Ma</span><span class="cell c-ma">Ma</span><span class="cell c-mi">Mi</span><span class="cell c-mi">Mi</span>
+        <span class="cell cell-n">Ben T.</span><span class="cell c-ma">Ma</span><span class="cell c-mi">Mi</span><span class="cell c-mi">Mi</span><span class="cell c-none">&mdash;</span><span class="cell c-none">&mdash;</span>
+        <span class="cell cell-n">Chloe R.</span><span class="cell c-mi">Mi</span><span class="cell c-hi">Hi</span><span class="cell c-hi">Hi</span><span class="cell c-none">&mdash;</span><span class="cell c-none">&mdash;</span>
+        <span class="cell cell-n">David M.</span><span class="cell c-none">&mdash;</span><span class="cell c-none">&mdash;</span><span class="cell c-none">&mdash;</span><span class="cell c-none">&mdash;</span><span class="cell c-none">&mdash;</span>
+        <span class="cell cell-n">Eva S.</span><span class="cell c-ma">Ma</span><span class="cell c-ma">Ma</span><span class="cell c-mi">Mi</span><span class="cell c-mi">Mi</span><span class="cell c-none">&mdash;</span>
+      </div>
+      <div class="legend">
+        <span><i class="c-none"></i>&mdash; &middot; {{ teachers.roster.legend.0 }}</span>
+        <span><i class="c-hi"></i>Hi &middot; {{ teachers.roster.legend.1 }}</span>
+        <span><i class="c-mi"></i>Mi &middot; {{ teachers.roster.legend.2 }}</span>
+        <span><i class="c-ma"></i>Ma &middot; {{ teachers.roster.legend.3 }}</span>
+      </div>
+    </div>
+    <div class="settings"><b>&#9881;&#65039; {{ teachers.roster.settingsTitle }}</b><span>{{ teachers.roster.settings.0 }}</span><span>{{ teachers.roster.settings.1 }}</span><span>{{ teachers.roster.settings.2 }}</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <ul class="trust">
+    <li><i aria-hidden="true">&#127760;</i>{{ trust.items.0 }}</li>
+    <li><i aria-hidden="true">&#129490;</i>{{ trust.items.1 }}</li>
+    <li><i aria-hidden="true">&#9201;&#65039;</i>{{ trust.items.2 }}</li>
+    <li><i aria-hidden="true">&#128483;&#65039;</i>{{ trust.items.3 }}</li>
+    <li><i aria-hidden="true">&#128683;</i>{{ trust.items.4 }}</li>
+  </ul>
+</section>
+
+<section class="sec final">
+  <div class="final-art">
+    <div class="blob fb"></div>
+    <div class="final-bear bob"><picture><source type="image/webp" srcset="/assets/bear.webp"><img src="/assets/bear.png" alt="{{ final.alt }}" width="480" height="480" loading="lazy"></picture></div>
+    <div class="bubble final-bubble">{{ final.bubble }}</div>
+  </div>
+  <div class="final-copy">
+    <h2>{{ final.title }}</h2>
+    <p class="lead">{{ final.sub }}</p>
+    <a class="pill pill-blue pill-lg" href="{{ links.parent }}" rel="noopener"><span aria-hidden="true">&#128100;</span>{{ final.cta }}</a>
+    <p class="login-line">{{ final.loginPrompt }} <a href="{{ links.login }}" rel="noopener">{{ final.login }}</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-brand">
+      <span class="footer-logo"><svg class="star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.85 5.9 6.5.85-4.75 4.5 1.2 6.45L12 17.2l-5.8 3.1 1.2-6.45-4.75-4.5 6.5-.85z" fill="#F6C84E" stroke="#D9A325" stroke-width="1.8" stroke-linejoin="round"/></svg>NumiPaws</span>
+      <span class="footer-tag">{{ footer.tagline }}</span>
+    </div>
+    <nav class="footer-nav" aria-label="{{ footer.privacy }}, {{ footer.terms }}, {{ footer.contact }}">
+      <a href="{{ site.privacyHref }}">{{ footer.privacy }}</a>
+      <a href="{{ site.termsHref }}">{{ footer.terms }}</a>
+      <a href="mailto:hello@numipaws.com">{{ footer.contact }}</a>
+    </nav>
+    <div class="ls ls-full ls-up ls-left" data-ls>
+      <button type="button" class="ls-btn" aria-haspopup="menu" aria-expanded="false" aria-label="{{ lang.label }}: {{ site.langName }}">
+        <img src="/assets/flag-{{ site.flag }}.svg" alt="" width="24" height="16" loading="lazy">
+        <span class="ls-code">{{ site.langCode }}</span><span class="ls-name">{{ site.langName }}</span>
+        <span class="ls-caret" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="ls-menu" role="menu" aria-label="{{ lang.label }}">
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.enChecked }}" lang="en" hreflang="en" href="{{ site.enPath }}" data-lang="en"><img src="/assets/flag-gb.svg" alt="" width="24" height="16" loading="lazy"><span>{{ lang.en }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+        <a class="ls-row" role="menuitemradio" aria-checked="{{ site.roChecked }}" lang="ro" hreflang="ro" href="{{ site.roPath }}" data-lang="ro"><img src="/assets/flag-ro.svg" alt="" width="24" height="16" loading="lazy"><span>{{ lang.ro }}</span><i class="ls-check" aria-hidden="true">&#10003;</i></a>
+      </div>
+    </div>
+    <span class="copyright">{{ footer.copyright }}</span>
+  </div>
+</footer>
+</div>
+</body>
+</html>

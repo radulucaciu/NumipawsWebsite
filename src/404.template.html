@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-nolang>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="{{ site.cspMeta }}">
+<title>404 · NumiPaws</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFF2D1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<div class="page">
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="/" aria-label="{{ en.nav.home }}"><svg class="star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.85 5.9 6.5.85-4.75 4.5 1.2 6.45L12 17.2l-5.8 3.1 1.2-6.45-4.75-4.5 6.5-.85z" fill="#F6C84E" stroke="#D9A325" stroke-width="1.8" stroke-linejoin="round"/></svg>NumiPaws</a>
+  </div>
+</header>
+<main class="doc">
+  <h1>404</h1>
+  <section class="lang-block" lang="en">
+    <h2>{{ en.notFound.title }}</h2>
+    <p class="lead">{{ en.notFound.text }}</p>
+    <a class="pill pill-blue pill-sm" href="/">{{ en.notFound.home }}</a>
+  </section>
+  <section class="lang-block" lang="ro">
+    <h2>{{ ro.notFound.title }}</h2>
+    <p class="lead">{{ ro.notFound.text }}</p>
+    <a class="pill pill-blue pill-sm" href="/ro/">{{ ro.notFound.home }}</a>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-in">
+    <span class="copyright">{{ en.footer.copyright }}</span>
+  </div>
+</footer>
+</div>
+</body>
+</html>

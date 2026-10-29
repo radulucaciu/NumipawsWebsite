@@ -79,6 +79,9 @@ Google Fonts, self-hosted under `assets/fonts/` with the OFL license.
 
 ## Deploy: Cloudflare Pages
 
+Full step-by-step (GitHub, Cloudflare zone, Pages project, custom domain,
+zone settings, DNSSEC, CAA, HSTS preload, live checks): `DEPLOY.md`.
+
 - Build command: `node build.mjs`
 - Build output directory: `dist`
 - No install step, no `package.json`.
@@ -93,10 +96,10 @@ robots.txt audit fails locally because `connect-src 'none'` blocks its fetch.
 
 - Hardware-key or app 2FA on GitHub, Cloudflare and the registrar; no shared accounts.
 - Registrar transfer lock, auto-renew, DNSSEC on.
-- CAA record limiting issuers to Cloudflare and Let's Encrypt.
+- CAA: either none, or the full set of CAs Cloudflare issues through (see `DEPLOY.md`).
 - `app.numipaws.com` must serve HTTPS before the apex goes live: HSTS uses `includeSubDomains`.
 - Submit the domain to the HSTS preload list after the first deploy.
-- Cloudflare Web Analytics is optional and a dashboard toggle, not code.
+- Cloudflare Web Analytics, Rocket Loader, Email Obfuscation and Bot Fight Mode inject scripts the CSP blocks; keep them off.
 - Verify: securityheaders.com, Mozilla Observatory, SSL Labs, and every app link's `lang` and `role` query.
 
 ## Not in the repo yet
